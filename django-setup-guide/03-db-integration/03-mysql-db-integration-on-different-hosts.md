@@ -130,19 +130,19 @@ Otherwise **follow** below step:
 
 ## Test Remote Access from Django Server
 
-Install MySQL client:
+- Install MySQL client:
 
-```bash
-dnf install mysql -y
-```
+  ```bash
+  dnf install mysql
+  ```
 
-Test connection:
+- Test connection:
 
-```bash
-mysql -u django_user -p -h <MYSQL_SERVER_IP> -P 3306
-```
+  ```bash
+  mysql -u django_user -p -h <MYSQL_SERVER_IP> -P 3306
+  ```
 
-If this works → Django will work.
+  > If this works → Django will work.
 
 ---
 
@@ -154,18 +154,18 @@ If this works → Django will work.
   source djangoenv/bin/activate
   ```
 
-Inside virtualenv:
+- Inside virtualenv:
 
-```bash
-pip install mysqlclient
-```
+  ```bash
+  pip install mysqlclient
+  ```
 
 - If error occurs on Linux:
 
-```bash
-dnf install python3-devel mysql-devel
-pip install mysqlclient
-```
+  ```bash
+  dnf install python3-devel mysql-devel
+  pip install mysqlclient
+  ```
 
 ---
 
@@ -215,12 +215,12 @@ pip install mysqlclient
 
 ## Run Migration
 
-Now **migrate** Django tables into **MySQL**:
+- Now **migrate** Django tables into **MySQL**:
 
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
+  ```bash
+  python manage.py makemigrations
+  python manage.py migrate
+  ```
 
 ---
 
