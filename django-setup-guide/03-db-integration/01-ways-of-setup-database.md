@@ -1,6 +1,10 @@
-If you are containerizing a Django application, the best choice depends on deployment architecture. Here are the common approaches.
+>[!IMPORTANT]
+If you are containerizing a Django application, the best choice to setup **database** depends on deployment architecture. Here are the common approaches.
 
-## Option 1: Django Container + MySQL Container (Recommended for Development and Small Deployments)
+## Option 1: Container Same Host
+**Django Container + MySQL Container**\
+Recommended for Development and Small Deployments
+
 
 ```
 +----------------------+
@@ -58,7 +62,9 @@ Here, `HOST="mysql"` works because Docker provides internal DNS resolution.
 
 ---
 
-## Option 2: Django Container + MySQL Installed on a Linux Server (Common in Production)
+## Option 2: Different Server
+**Django Container or Host + MySQL Installed on a Remote Linux Server** \
+Common in Production
 
 ```
 +--------------------+        TCP 3306        +----------------------+
@@ -73,7 +79,7 @@ Here, `HOST="mysql"` works because Docker provides internal DNS resolution.
 
 In this setup:
 
-* Django runs in Docker.
+* Django runs in Docker or Host.
 * MySQL runs directly on a Linux server (same machine or another server).
 * Django connects using the server's IP address or hostname.
 
@@ -104,15 +110,17 @@ Typically you would:
 
 ---
 
-## Option 3: Django Container + MySQL on the Same Linux Host (Installed Outside Docker)
+## Option 3: Same Server
+**Django Container or Host + MySQL on the Same Linux Host** 
 
 Suppose:
 
 ```
-Linux Host
+Linux Host (Same Server)
 ├── MySQL installed normally
 └── Docker
-    └── Django container
+|    └── Django container
+|── or Django on Linux HOst
 ```
 
 If MySQL listens **only on `127.0.0.1`**, the Django container **cannot** reach it because `127.0.0.1` inside the container refers to the container itself.

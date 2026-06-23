@@ -96,7 +96,7 @@ Refer to database installation sop.
 - Open:
 
   ```bash
-  myproject/settings.py
+  settings.py
   ```
 
   > Find `DATABASES` and replace SQLite config:
@@ -159,7 +159,7 @@ To verify that the database is MySQL, check the following:
           "NAME": "your_database_name",
           "USER": "your_mysql_user",
           "PASSWORD": "your_password",
-          "HOST": "your_mysql_server_ip",
+          "HOST": "localhost",
           "PORT": "3306",
       }
   }

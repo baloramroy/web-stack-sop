@@ -2,6 +2,26 @@
 
 We will use **MySQL** as the **backend database** on **different host**.
 
+## Prerequisites
+
+Make sure you already have:
+
+1. Python installed
+2. Django project created
+3. Virtual environment activated
+4. MySQL Installed
+
+Check:
+
+```bash
+python --version
+django-admin --version
+mysql --version
+```
+
+>[!NOTE]
+Refer to database installation sop.
+
 ## Architecture Understanding
 
 * Django App Server → runs your Django project
@@ -43,6 +63,7 @@ So:
 
   > `%` = allow from any IP (we will secure later)
 
+### Provide Privileges
 
 - Grant Privileges
 
@@ -127,13 +148,19 @@ If this works → Django will work.
 
 ## Install Django MySQL Driver (Django Server)
 
+- Activate your virtual environment first:
+
+  ```bash
+  source djangoenv/bin/activate
+  ```
+
 Inside virtualenv:
 
 ```bash
 pip install mysqlclient
 ```
 
-If error:
+- If error occurs on Linux:
 
 ```bash
 dnf install python3-devel mysql-devel
@@ -147,7 +174,7 @@ pip install mysqlclient
 - Open:
 
   ```bash
-  myproject/settings.py
+  settings.py
   ```
 
   > Find `DATABASES` and replace SQLite config:
@@ -187,6 +214,8 @@ pip install mysqlclient
 ---
 
 ## Run Migration
+
+Now **migrate** Django tables into **MySQL**:
 
 ```bash
 python manage.py makemigrations
@@ -275,11 +304,35 @@ To verify that the database is MySQL, check the following:
 
   > If those tables and records exist in your MySQL database, then **your Django project has successfully migrated to MySQL**.
 
+---
+
+## Create Superuser
+
+- Run:
+
+  ```bash
+  python manage.py createsuperuser
+  ```
+
+---
+
+## Run Django Server
+
+- Run:
+
+  ```bash
+  python manage.py runserver 0.0.0.0:8000
+  ```
+
+- Check:
+
+  ```
+  http://127.0.0.1:8000/admin
+  ```
 
 ---
 
 ## Common Problems & Fixes
-
 
 ### Access denied
 
