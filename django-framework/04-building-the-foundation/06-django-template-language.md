@@ -29,113 +29,109 @@ By the end of this lesson, you will understand:
 ---
 
 ## First, Let's Understand DTL
+>[!Note]
+*DTL stands for **Django Template Language**.*\
+*It allows you to add **logic** to your HTML.*
 
-- DTL stands for **Django Template Language**.
+- Without DTL:
 
-- It allows you to add **logic** to your HTML.
+  ```html
+  <h1>Welcome</h1>
+  ```
 
-Without DTL:
+- With DTL:
 
-```html
-<h1>Welcome</h1>
-```
+  ```django
+  <h1>Welcome {{ name }}</h1>
+  ```
 
-With DTL:
+- or
 
-```django
-<h1>Welcome {{ name }}</h1>
-```
+  ```django
+  {% if is_logged_in %}
+      <h1>Welcome</h1>
+  {% endif %}
+  ```
 
-or
-
-```django
-{% if is_logged_in %}
-    <h1>Welcome</h1>
-{% endif %}
-```
-
->Notice something? \
-> There are **two different syntaxes**.
+  >Notice something? \
+  > There are **two different syntaxes**.
 
 ---
 
 ## Rule #1
 
-### `{{ }}` → Display Data
+### ◼️ `{{ }}` → Display Data
 
-**Example:**
+- **Example:**
 
-```django
-{{ name }}
-```
+  ```django
+  {{ name }}
+  ```
 
-This means:
+  > **This means**: Show the value.
 
-> Show the value.
+- **Think:**
 
-**Think:**
+  ```text
+  Display something
+  ```
 
-```text
-Display something
-```
+- **Examples:**
 
-**Examples:**
+  ```django
+  {{ name }}
 
-```django
-{{ name }}
+  {{ age }}
 
-{{ age }}
+  {{ city }}
 
-{{ city }}
+  {{ email }}
+  ```
 
-{{ email }}
-```
-
-> These all print values.
+  > These all print values.
 
 ---
 
 ## Rule #2
 
-### `{% %}` → Perform Logic
+### ◼️ `{% %}` → Perform Logic
 
-**Examples:**
+- **Examples:**
 
-```django
-{% if %}
-```
+  ```django
+  {% if %}
+  ```
 
-```django
-{% for %}
-```
+  ```django
+  {% for %}
+  ```
 
-```django
-{% extends %}
-```
+  ```django
+  {% extends %}
+  ```
 
-```django
-{% block %}
-```
+  ```django
+  {% block %}
+  ```
 
-- These **do not display data**.
+  - These **do not display data**.
+  - They tell Django to **do something**.
 
-- They tell Django to **do something**.
+- **Think:**
 
-**Think:**
+  ```text
+  Action
 
-```text
-Action
+  Decision
 
-Decision
+  Loop
 
-Loop
+  Control
+  ```
 
-Control
-```
+#
 
----
-
-## Easy Way to Remember
+### Easy Way to Remember
 
 | Syntax  | Purpose                |
 | ------- | ---------------------- |
@@ -148,310 +144,312 @@ Control
 
 ## Part 1
 
-### `{% if %}`
+### ◼️ `{% if %}`
 
-**Suppose your view is:**
+- **Suppose your view is:**
 
-```python
-def home(request):
+  ```python
+  def home(request):
 
-    context = {
-        "is_logged_in": True
-    }
+      context = {
+          "is_logged_in": True
+      }
 
-    return render(request, "home.html", context)
-```
+      return render(request, "home.html", context)
+  ```
 
-**Now inside the template:**
+- **Now inside the template:**
 
-```django
-{% if is_logged_in %}
+  ```django
+  {% if is_logged_in %}
 
-<h2>Welcome Back!</h2>
+  <h2>Welcome Back!</h2>
 
-{% endif %}
-```
+  {% endif %}
+  ```
 
-**What happens?**
+- **What happens?**
+  
+  ```python
+  is_logged_in is True
+  ```
 
-`is_logged_in` is `True`.
+- **So Django displays:**
 
-**So Django displays:**
+  ```html
+  <h2>Welcome Back!</h2>
+  ```
 
-```html
-<h2>Welcome Back!</h2>
-```
+- **Now change it.**
 
-**Now change it.**
+  ```python
+  "is_logged_in": False
+  ```
 
-```python
-"is_logged_in": False
-```
-
-- Refresh.
-- Nothing appears.
-- Because the condition failed.
+  - Refresh.
+  - Nothing appears.
+  - Because the condition failed.
 
 #
 
-### Think of it like Python.
+### ◼️ Think of it like Python.
 
-**Python:**
+- **Python:**
 
-```python
-if is_logged_in:
-    print("Welcome")
-```
+  ```python
+  if is_logged_in:
+      print("Welcome")
+  ```
 
-**DTL:**
+- **DTL:**
 
-```django
-{% if is_logged_in %}
+  ```django
+  {% if is_logged_in %}
 
-Welcome
+  Welcome
 
-{% endif %}
-```
+  {% endif %}
+  ```
 
-> Very similar.
-
----
-
-### `{% else %}`
-
-**View:**
-
-```python
-context = {
-    "is_logged_in": False
-}
-```
-
-**Template:**
-
-```django
-{% if is_logged_in %}
-
-<h2>Welcome</h2>
-
-{% else %}
-
-<h2>Please Login</h2>
-
-{% endif %}
-```
-
-**Output:**
-
-```html
-Please Login
-```
-
-**Now make it True.**
-
-Output becomes
-
-```html
-Welcome
-```
+  > Very similar.
 
 ---
 
-### `{% elif %}`
+### ◼️ `{% else %}`
 
-**Suppose**
+- **View:**
 
-```python
-context = {
-    "marks": 80
-}
-```
+  ```python
+  context = {
+      "is_logged_in": False
+  }
+  ```
 
-**Template:**
+- **Template:**
 
-```django
-{% if marks >= 80 %}
+  ```django
+  {% if is_logged_in %}
 
-Grade A
+  <h2>Welcome</h2>
 
-{% elif marks >= 60 %}
+  {% else %}
 
-Grade B
+  <h2>Please Login</h2>
 
-{% else %}
+  {% endif %}
+  ```
 
-Fail
+- **Output:**
 
-{% endif %}
-```
+  ```html
+  Please Login
+  ```
 
-**Output:**
+- **Now make it `True`**
 
-```
-Grade A
-```
+  Output becomes
 
-> Notice how similar it is to Python.
+  ```html
+  Welcome
+  ```
+
+---
+
+### ◼️ `{% elif %}`
+
+- **Suppose**
+
+  ```python
+  context = {
+      "marks": 80
+  }
+  ```
+
+- **Template:**
+
+  ```django
+  {% if marks >= 80 %}
+
+  Grade A
+
+  {% elif marks >= 60 %}
+
+  Grade B
+
+  {% else %}
+
+  Fail
+
+  {% endif %}
+  ```
+
+- **Output:**
+
+  ```
+  Grade A
+  ```
+
+  > Notice how similar it is to Python.
 
 ---
 
 ## Part 2
 
-### `{% for %}`
+### ◼️ `{% for %}`
 
-◼️ **NOTE:** This is probably the most used template tag after `if`.
+- **Suppose the view sends:**
 
-**Suppose the view sends:**
+  ```python
+  context = {
+      "courses": [
+          "Python",
+          "Linux",
+          "Django",
+          "Docker"
+      ]
+  }
+  ```
 
-```python
-context = {
-    "courses": [
-        "Python",
-        "Linux",
-        "Django",
-        "Docker"
-    ]
-}
-```
+- **The template:**
 
-**The template:**
+  ```django
+  {% for course in courses %}
 
-```django
-{% for course in courses %}
+  <p>{{ course }}</p>
 
-<p>{{ course }}</p>
+  {% endfor %}
+  ```
 
-{% endfor %}
-```
+- **Output:**
 
-**Output:**
+  ```html
+  Python
 
-```html
-Python
+  Linux
 
-Linux
+  Django
 
-Django
-
-Docker
-```
+  Docker
+  ```
+  
+> **NOTE:** This is probably the most used template tag after `if`.
 
 #
 
-### Think of it exactly like Python
+### ◼️ Think of it exactly like Python
 
-**Python:**
+- **Python:**
 
-```python
-for course in courses:
-    print(course)
-```
+  ```python
+  for course in courses:
+      print(course)
+  ```
 
-**Template:**
+- **Template:**
 
-```django
-{% for course in courses %}
+  ```django
+  {% for course in courses %}
 
-{{ course }}
+  {{ course }}
 
-{% endfor %}
-```
+  {% endfor %}
+  ```
 
-**Example with HTML**
+- **Example with HTML**
 
-```django
-<ul>
+  ```django
+  <ul>
 
-{% for course in courses %}
+  {% for course in courses %}
 
-<li>{{ course }}</li>
+  <li>{{ course }}</li>
 
-{% endfor %}
+  {% endfor %}
 
-</ul>
-```
+  </ul>
+  ```
 
-**Output**
+- **Output**
 
-```html
-<ul>
+  ```html
+  <ul>
 
-<li>Python</li>
+  <li>Python</li>
 
-<li>Linux</li>
+  <li>Linux</li>
 
-<li>Django</li>
+  <li>Django</li>
 
-<li>Docker</li>
+  <li>Docker</li>
 
-</ul>
-```
+  </ul>
+  ```
 
-> Now your page becomes dynamic.
+  > Now your page becomes dynamic.
 
 ---
 
 ## Part 3
 
-### Accessing Dictionary Values
+### ◼️ Accessing Dictionary Values
 
-**View:**
+- **View:**
 
-```python
-context = {
-    "student": {
-        "name": "Baloram",
-        "city": "Dhaka",
-        "age": 25
-    }
-}
-```
+  ```python
+  context = {
+      "student": {
+          "name": "Baloram",
+          "city": "Dhaka",
+          "age": 25
+      }
+  }
+  ```
 
-**Many beginners think they should write:**
+- **Many beginners think they should write:**
 
-```django
-{{ student["name"] }}
-```
+  ```django
+  {{ student["name"] }}
+  ```
 
-- ❌ Wrong.
+  - ❌ Wrong.
 
-- In Django templates you use **dot notation**.
+  - In Django templates you use **dot notation**.
 
-**Correct:**
+- **Correct:**
 
-```django
-{{ student.name }}
+  ```django
+  {{ student.name }}
 
-{{ student.city }}
+  {{ student.city }}
 
-{{ student.age }}
-```
+  {{ student.age }}
+  ```
 
-**Output**
+- **Output**
 
-```text
-Baloram
+  ```text
+  Baloram
 
-Dhaka
+  Dhaka
 
-25
-```
+  25
+  ```
 
 #
 
-### Why Dot Notation?
+### ◼️ Why Dot Notation?
 
-**Python:**
+- **Python:**
 
-```python
-student["name"]
-```
+  ```python
+  student["name"]
+  ```
 
-**Django Template:**
+- **Django Template:**
 
-```django
-student.name
-```
+  ```django
+  student.name
+  ```
 
 >Django keeps the template language simple by hiding Python syntax.
 
@@ -459,29 +457,29 @@ student.name
 
 ## Part 4 — Accessing Object Attributes
 
-Later we'll have models.
+**Later we'll have models.**
 
-**Imagine:**
+- **Imagine:**
 
-```python
-student.name
+  ```python
+  student.name
 
-student.email
+  student.email
 
-student.age
-```
+  student.age
+  ```
 
-**Templates are exactly the same.**
+- **Templates are exactly the same.**
 
-```django
-{{ student.name }}
+  ```django
+  {{ student.name }}
 
-{{ student.email }}
+  {{ student.email }}
 
-{{ student.age }}
-```
+  {{ student.age }}
+  ```
 
-> That's why learning dot notation now is important.
+  > That's why learning dot notation now is important.
 
 **It works for both:**
 
@@ -492,7 +490,7 @@ student.age
 
 ## Complete Example
 
-### views.py
+### ◼️ views.py
 
 ```python
 from django.shortcuts import render
@@ -521,7 +519,7 @@ def home(request):
 
 #
 
-### home.html
+### ◼️ home.html
 
 ```django
 {% extends "base.html" %}
@@ -593,37 +591,37 @@ Browser
 
 ## Important Limitation
 
-◼️ Templates are **not** meant for complex programming.
+◼️ **Templates are not meant for complex programming.**
 
-Good:
+- Good:
 
-```django
-{{ student.name }}
-```
+  ```django
+  {{ student.name }}
+  ```
 
-Good:
+- Good:
 
-```django
-{% if is_logged_in %}
-```
+  ```django
+  {% if is_logged_in %}
+  ```
 
-Good:
+- Good:
 
-```django
-{% for course in courses %}
-```
+  ```django
+  {% for course in courses %}
+  ```
 
-Bad:
+- Bad:
 
-```django
-{{ student.calculate_salary() }}
-```
+  ```django
+  {{ student.calculate_salary() }}
+  ```
 
-Bad:
+- Bad:
 
-```django
-{{ my_python_function() }}
-```
+  ```django
+  {{ my_python_function() }}
+  ```
 
 **Why?**
 
@@ -653,27 +651,27 @@ Keep your templates simple.
 
 ◼️ Before we move to **Models**, try this on your own:
 
-**Update your `home` view to send this context:**
+- **Update your `home` view to send this context:**
 
-```python
-context = {
-    "employee": {
-        "name": "Baloram Roy",
-        "department": "IT",
-        "designation": "IT Support Engineer"
-    },
-    "skills": [
-        "Linux",
-        "Python",
-        "Django",
-        "Docker",
-        "Ansible"
-    ],
-    "is_manager": False
-}
-```
+  ```python
+  context = {
+      "employee": {
+          "name": "Baloram Roy",
+          "department": "IT",
+          "designation": "IT Support Engineer"
+      },
+      "skills": [
+          "Linux",
+          "Python",
+          "Django",
+          "Docker",
+          "Ansible"
+      ],
+      "is_manager": False
+  }
+  ```
 
-**Then create a template that:**
+◼️ **Then create a template that:**
 
 1. Displays the employee's name, department, and designation.
 2. Uses an `{% if %}` statement to display:
@@ -695,6 +693,7 @@ You've now learned the core pieces of the presentation layer:
 * ✅ Context
 * ✅ Django Template Language
 
-The next lesson is where we'll start working with data by learning **`models.py`**. We'll begin by creating a single model, understanding what a model represents, and seeing how it relates to a database table—without rushing into CRUD. This foundation will make the database side of Django much easier to understand.
+The next lesson is where we'll start working with data by learning **`models.py`**. \
+We'll begin by creating a single **model**, understanding what a model **represents**, and seeing how it relates to a **database** table—without rushing into **CRUD**. This foundation will make the **database** side of Django much **easier** to understand.
 
 ---

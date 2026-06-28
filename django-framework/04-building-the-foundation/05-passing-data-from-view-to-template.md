@@ -1,4 +1,6 @@
-### This is where Django becomes **dynamic**.
+# Lesson 5: Passing Data from a View to a Template (Context)
+
+- This is where Django becomes **dynamic**.
 - Until now, every page was **static**:
   ```html
   <h2>Home Page</h2>
@@ -11,8 +13,6 @@
 - This concept is called **Context**.
 
 ---
-
-# Lesson 5: Passing Data from a View to a Template (Context)
 
 ## Learning Objectives
 
@@ -177,13 +177,13 @@ By the end of this lesson, you will understand:
 
 ### Understanding `render()`
 
-- **The `render()` function looks like this:**
+◼️ **The `render()` function looks like this:**
 
   ```python
   render(request, template_name, context)
   ```
 
-◼️ Let's understand each argument.
+◼️ **Let's understand each argument.**
 
 - **First Argument**
 
@@ -246,33 +246,31 @@ By the end of this lesson, you will understand:
 
 ### What is `{{ }}`?
 
-◼️ This is called **variable interpolation** in the Django Template Language (DTL).
+- This is called **variable interpolation** in the Django Template Language (DTL).
 
-**It means:**
+  - **It means:**
 
-> "Display the value of this variable."
+    > "Display the value of this variable."
 
-- Example:
+  - Example:
 
-  ```
-  {{ name }}
-  ```
+    ```
+    {{ name }}
+    ```
 
-**Django asks:**
+- **Django asks:** Is there a variable called `name` in the context?
 
-> Is there a variable called `name` in the context?
+  - Yes.
 
-- Yes.
+    ```
+    "name": "Baloram"
+    ```
 
-  ```
-  "name": "Baloram"
-  ```
+  - So it prints:
 
-- So it prints:
-
-  ```
-  Baloram
-  ```
+    ```
+    Baloram
+    ```
 
 #
 
@@ -304,7 +302,7 @@ By the end of this lesson, you will understand:
 
 #
 
-◼️ Another example:
+◼️ **Another example:**
 
 - **View:**
 
