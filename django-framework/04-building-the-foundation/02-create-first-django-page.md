@@ -364,6 +364,8 @@ return render(request, "home.html")
 
 # Step 7: Create `home.html`
 
+- **Insert below code:**
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -382,25 +384,25 @@ return render(request, "home.html")
 
 ## Step 8: Run the Server
 
-- Run
+- **Run**
 
   ```bash
   python manage.py runserver
   ```
 
-- Visit:
+- **Visit:**
 
   ```text
   http://127.0.0.1:8000/
   ```
 
-- You should see:
+- Y**ou should see:**
 
   ```text
   Welcome to Django
   ```
 
-Congratulations! 🎉
+**Congratulations!** 🎉
 
 You've built your first Django page.
 
@@ -408,13 +410,13 @@ You've built your first Django page.
 
 # Let's Follow the Request Again
 
-◼️ When you visit:
+◼️ **When you visit:**
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-◼️ This is exactly what happens:
+◼️ **This is exactly what happens:**
 
 ```text
 1. Browser
