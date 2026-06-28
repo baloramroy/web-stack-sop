@@ -1,5 +1,3 @@
-Excellent. We'll treat this like a classroom lesson. **No CRUD, no models, no database.** Just one concept.
-
 # Lesson 1: How a Django Request Works
 
 ## Learning Objective
@@ -15,255 +13,241 @@ By the end of this lesson, you should be able to explain:
 
 ---
 
-# Big Picture
+## Big Picture
 
-Imagine you own a restaurant.
+- Imagine you own a **restaurant**.
+- A **customer** walks in and **asks** for a **burger**.
+- The **request** doesn't go **directly** to the **chef**.
+- **Instead, it follows a path.**
 
-A customer walks in and asks for a burger.
+  ```
+  Customer
+      │
+      ▼
+  Receptionist
+      │
+      ▼
+  Waiter
+      │
+      ▼
+  Chef
+      │
+      ▼
+  Food
+      │
+      ▼
+  Customer
+  ```
 
-The request doesn't go directly to the chef.
+- **Django works almost the same way.**
 
-Instead, it follows a path.
+  ```
+  Browser
+      │
+      ▼
+  Project URL
+      │
+      ▼
+  App URL
+      │
+      ▼
+  View
+      │
+      ▼
+  Template
+      │
+      ▼
+  Browser
+  ```
 
-```
-Customer
-    │
-    ▼
-Receptionist
-    │
-    ▼
-Waiter
-    │
-    ▼
-Chef
-    │
-    ▼
-Food
-    │
-    ▼
-Customer
-```
-
-Django works almost the same way.
-
-```
-Browser
-    │
-    ▼
-Project URL
-    │
-    ▼
-App URL
-    │
-    ▼
-View
-    │
-    ▼
-Template
-    │
-    ▼
-Browser
-```
-
-This is the most important diagram in beginner Django.
+  > This is the most important diagram in beginner Django.
 
 ---
 
-# Let's Understand Each Part
+## Let's Understand Each Part
 
-## 1. Browser
+### 1. Browser
 
-Example:
+- **Example:**
 
-```
-http://127.0.0.1:8000/
-```
+  ```
+  http://127.0.0.1:8000/
+  ```
 
-or
+  or
 
-```
-http://127.0.0.1:8000/about/
-```
+  ```
+  http://127.0.0.1:8000/about/
+  ```
 
-When you press **Enter**, your browser sends an **HTTP Request**.
+  > When you press **Enter**, your browser sends an **HTTP Request**.
+  
 
-Think of it as:
+- Think of it as:
 
-> "Hello Django, someone wants the Home page."
+  > "Hello Django, someone wants the Home page."
 
----
+#
 
-## 2. Project `urls.py`
+### 2. Project `urls.py`
 
-Suppose your project looks like this:
+- **Suppose your project looks like this:**
 
-```
-myproject/
-│
-├── manage.py
-│
-├── myproject/
-│   ├── settings.py
-│   ├── urls.py      ← Project URLs
-│   ├── wsgi.py
-│   └── asgi.py
-│
-└── myapp/
-```
+  ```
+  myproject/
+  │
+  ├── manage.py
+  │
+  ├── myproject/
+  │   ├── settings.py
+  │   ├── urls.py      ← Project URLs
+  │   ├── wsgi.py
+  │   └── asgi.py
+  │
+  └── myapp/
+  ```
 
-The browser request reaches
+- **The browser request reaches**
 
-```
-myproject/urls.py
-```
+  ```
+  myproject/urls.py
+  ```
 
-This file is the **main entrance** of your project.
+- This file is the **main entrance** of your project.
+- Think of it as the **reception desk**.
+- It doesn't create **pages**.
+- It only decides:
 
-Think of it as the **reception desk**.
+  > "Which app should handle this request?"
 
-It doesn't create pages.
+- **Example:**
 
-It only decides:
+  ```
+  #Someone requests:
+  > http://127.0.0.1:8000/about/
+  
+  #Project URL asks:
+  > Which app owns `/about/`?
 
-> "Which app should handle this request?"
+  ```
+#
 
-Example:
+### 3. App `urls.py`
 
-```
-Someone requests:
+- Now Django **forwards** the request to the **app**.
+  
+  **Example:**
 
-http://127.0.0.1:8000/about/
-```
+  ```
+  myapp/
+  │
+  ├── urls.py
+  ├── views.py
+  ```
 
-Project URL asks:
+- This file is like the **department receptionist**.
 
-> Which app owns `/about/`?
+  **It decides:**
 
----
+  ```
+  "/"          → home()
+  "/about/"    → about()
+  "/contact/"  → contact()
+  ```
 
-## 3. App `urls.py`
+- It doesn't create **HTML**.
+- It simply **maps** a URL to a specific **view**.
 
-Now Django forwards the request to the app.
+  **Think:**
 
-Example:
+  ```
+  URL
+  ↓
 
-```
-myapp/
-│
-├── urls.py
-├── views.py
-```
+  Function
+  ```
 
-This file is like the **department receptionist**.
+#
 
-It decides:
+### 4. View (`views.py`)
 
-```
-"/"          → home()
-"/about/"    → about()
-"/contact/"  → contact()
-```
+- This is where the actual work happens.
+- A view is simply a **Python function (or class)** that receives a request and returns a response.
+- Think of the view as the **chef**.
+- The chef decides:
 
-It doesn't create HTML.
+  * What data is needed?
+  * Which page should be shown?
+  * What should the user receive?
 
-It simply maps a URL to a specific **view**.
+- For now, don't think about databases.
+- Just remember:
 
-Think:
+  ```
+  Request comes in
 
-```
-URL
-↓
+  ↓
 
-Function
-```
+  View executes Python code
 
----
+  ↓
 
-## 4. View (`views.py`)
+  Returns a response
+  ```
 
-This is where the actual work happens.
+#
 
-A view is simply a **Python function (or class)** that receives a request and returns a response.
+### 5. Template
 
-Think of the view as the **chef**.
+- A template is simply an **HTML file**.
 
-The chef decides:
+- **Example:**
 
-* What data is needed?
-* Which page should be shown?
-* What should the user receive?
+  ```
+  home.html
 
-For now, don't think about databases.
+  about.html
 
-Just remember:
+  contact.html
+  ```
 
-```
-Request comes in
-
-↓
-
-View executes Python code
-
-↓
-
-Returns a response
-```
-
----
-
-## 5. Template
-
-A template is simply an **HTML file**.
-
-Example:
-
-```
-home.html
-
-about.html
-
-contact.html
-```
-
-The template is what the user actually sees in the browser.
-
-Think of it as the **finished meal** served to the customer.
-
-The view chooses which template to return.
+- The template is what the user actually sees in the browser.
+- Think of it as the **finished meal** served to the customer.
+- The view chooses which template to return.
 
 ---
 
-# Complete Flow
+## Complete Flow
 
 Let's follow a request from start to finish.
 
-You type:
+- **You type:**
 
-```
-http://127.0.0.1:8000/about/
-```
+  ```
+  http://127.0.0.1:8000/about/
+  ```
 
-Then Django processes it like this:
+- **Then Django processes it like this:**
 
-```
-Browser
-    │
-    │ Request
-    ▼
-Project urls.py
-    │
-    ▼
-App urls.py
-    │
-    ▼
-View (about)
-    │
-    ▼
-Template (about.html)
-    │
-    ▼
-Browser displays HTML
-```
+  ```
+  Browser
+      │
+      │ Request
+      ▼
+  Project urls.py
+      │
+      ▼
+  App urls.py
+      │
+      ▼
+  View (about)
+      │
+      ▼
+  Template (about.html)
+      │
+      ▼
+  Browser displays HTML
+  ```
 
 Nothing is skipped.
 
@@ -271,42 +255,42 @@ Every request follows this path.
 
 ---
 
-# A Real-Life Analogy
+## A Real-Life Analogy
 
-Imagine a company.
+- **Imagine a company**
 
-```
-Visitor
-    │
-    ▼
-Security Gate
-    │
-    ▼
-Reception
-    │
-    ▼
-Employee
-    │
-    ▼
-Prepared Document
-    │
-    ▼
-Visitor
-```
+  ```
+  Visitor
+      │
+      ▼
+  Security Gate
+      │
+      ▼
+  Reception
+      │
+      ▼
+  Employee
+      │
+      ▼
+  Prepared Document
+      │
+      ▼
+  Visitor
+  ```
 
-Now compare it to Django:
+- **Now compare it to Django:**
 
-| Company           | Django            |
-| ----------------- | ----------------- |
-| Visitor           | Browser           |
-| Security Gate     | Project `urls.py` |
-| Reception         | App `urls.py`     |
-| Employee          | View              |
-| Prepared Document | Template (HTML)   |
+  | Company           | Django            |
+  | ----------------- | ----------------- |
+  | Visitor           | Browser           |
+  | Security Gate     | Project `urls.py` |
+  | Reception         | App `urls.py`     |
+  | Employee          | View              |
+  | Prepared Document | Template (HTML)   |
 
 ---
 
-# What Each File Is Responsible For
+## What Each File Is Responsible For
 
 | File               | Responsibility                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------- |
@@ -317,42 +301,39 @@ Now compare it to Django:
 
 ---
 
-# One Important Concept
+## One Important Concept
 
-A common mistake beginners make is thinking:
+- A common mistake beginners make is thinking:
+    > "The browser opens `home.html` directly."
 
-> "The browser opens `home.html` directly."
+- **That is not how Django works.**
+- The browser **never** requests a template directly.
+- Instead, it requests a **URL**, and Django decides which template (if any) to render.
 
-**That is not how Django works.**
+- The flow is always:
 
-The browser **never** requests a template directly.
+  ```text
+  Browser
+  ↓
 
-Instead, it requests a **URL**, and Django decides which template (if any) to render.
+  URL
 
-The flow is always:
+  ↓
 
-```
-Browser
-↓
+  View
 
-URL
+  ↓
 
-↓
+  Template
 
-View
+  ↓
 
-↓
-
-Template
-
-↓
-
-Browser
-```
+  Browser
+  ```
 
 ---
 
-# What You Should Remember from This Lesson
+## What You Should Remember from This Lesson
 
 1. The browser sends an **HTTP request**.
 2. The project `urls.py` receives every request first.
@@ -364,12 +345,3 @@ Browser
 
 ---
 
-# Homework (No Coding Yet)
-
-Before we write any code, make sure you can answer these questions in your own words:
-
-1. Why do we have **two `urls.py` files** (project and app)?
-2. What is the difference between a **view** and a **template**?
-3. If you type `http://127.0.0.1:8000/about/`, what is the complete path the request follows until the page appears in the browser?
-
-Once you're comfortable with these concepts, our next lesson will be **creating your first page**, where you'll wire together `project/urls.py`, `app/urls.py`, `views.py`, and a template to see this request flow in action.
