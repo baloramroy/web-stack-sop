@@ -16,32 +16,28 @@ Just one page.
 
 ## Step 1: Our Project Structure
 
-Assume your project looks like this:
+**Assume your project looks like this:**
 
 ```text
-myproject/
-│
-├── manage.py
-│
-├── myproject/
-│   ├── settings.py
-│   ├── urls.py
-│   └── ...
-│
-└── myapp/
-    ├── views.py
-    ├── models.py
-    ├── admin.py
-    └── ...
-```
-
-**Currently, notice something.**
-
-- There is **no `urls.py` inside the app**.
-
-**That is normal.**
-
-- Django does **not** create one automatically.
+  myproject/
+  │
+  ├── manage.py
+  │
+  ├── myproject/
+  │   ├── settings.py
+  │   ├── urls.py
+  │   └── ...
+  │
+  └── myapp/
+      ├── views.py
+      ├── models.py
+      ├── admin.py
+      └── ...
+  ```
+- **Currently, notice something.**\
+  There is **no `urls.py` inside the app**.
+- **That is normal.**\
+  Django does **not** create one automatically.
 
 - We must create it ourselves.
 
@@ -49,30 +45,30 @@ myproject/
 
 ## Step 2: Create `myapp/urls.py`
 
-**Create a new file:**
+- **Create a new file:**
 
-```text
-myapp/
-│
-├── urls.py
-├── views.py
-├── models.py
-└── ...
-```
+  ```text
+  myapp/
+  │
+  ├── urls.py
+  ├── views.py
+  ├── models.py
+  └── ...
+  ```
 
-**Add this code:**
+- **Add this code:**
 
-```python
-from django.urls import path
-from . import views
+  ```python
+  from django.urls import path
+  from . import views
 
-urlpatterns = [
-]
-```
-
-> Let's understand every line.
+  urlpatterns = [
+  ]
+  ```
 
 #
+
+**Let's understand every line.**
 
 ### Line 1
 
@@ -81,32 +77,26 @@ from django.urls import path
 ```
 
 - Imports Django's `path()` function.
-
 - We'll use it to map URLs.
 
 #
+
 ### Line 2
 
   ```python
   from . import views
   ```
 
->`.` means: \
->Current directory of (the current app).
+- `. means`: Current directory of (the current app).
 
 - This imports:
-
-  ```text
-  views.py
-  ```
+  `views.py`
 
 - So later we can write:
+  `views.home`
 
-  ```python
-  views.home
-  ```
 
----
+#
 
 ### Line 3
 
@@ -137,9 +127,11 @@ urlpatterns = [
       return render(request, "home.html")
   ```
 
-  >Let's understand it.
+  >
 
 #
+
+**Let's understand it**
 
 ### What is a View?
 
@@ -198,9 +190,11 @@ urlpatterns = [
 return render(request, "home.html")
 ```
 
-This means:
+- **This means:**
 
-> Render the HTML template named `home.html` and send it back to the browser.
+  ```text
+  Render the HTML template named home.html and send it back to the browser.
+  ```
 
 - Think of `render()` as:
 
