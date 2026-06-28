@@ -330,7 +330,7 @@ return render(request, "home.html")
 
 ---
 
-# Step 6: Create the Templates Folder
+## Step 6: Create the Templates Folder
 
 - **Inside your app:**
 
@@ -362,7 +362,7 @@ return render(request, "home.html")
 
 ---
 
-# Step 7: Create `home.html`
+## Step 7: Create `home.html`
 
 - **Insert below code:**
 
@@ -408,7 +408,7 @@ You've built your first Django page.
 
 ---
 
-# Let's Follow the Request Again
+## Let's Follow the Request Again
 
 ◼️ **When you visit:**
 
