@@ -34,19 +34,19 @@ By the end of this lesson, you will understand:
 
 - It allows you to add **logic** to your HTML.
 
-**Without DTL:**
+Without DTL:
 
 ```html
 <h1>Welcome</h1>
 ```
 
-**With DTL:**
+With DTL:
 
 ```django
 <h1>Welcome {{ name }}</h1>
 ```
 
-**or**
+or
 
 ```django
 {% if is_logged_in %}
@@ -63,7 +63,7 @@ By the end of this lesson, you will understand:
 
 ### `{{ }}` → Display Data
 
-**Example:**
+Example:
 
 ```django
 {{ name }}
@@ -73,13 +73,13 @@ This means:
 
 > Show the value.
 
-**Think:**
+Think:
 
 ```text
 Display something
 ```
 
-**Examples:**
+Examples:
 
 ```django
 {{ name }}
@@ -99,7 +99,7 @@ Display something
 
 ### `{% %}` → Perform Logic
 
-**Examples:**
+Examples:
 
 ```django
 {% if %}
@@ -121,7 +121,7 @@ Display something
 
 - They tell Django to **do something**.
 
-**Think:**
+Think:
 
 ```text
 Action
@@ -180,9 +180,7 @@ def home(request):
 <h2>Welcome Back!</h2>
 ```
 
----
-
-### Now change it.
+**Now change it.**
 
 ```python
 "is_logged_in": False
@@ -196,14 +194,14 @@ def home(request):
 
 ### Think of it like Python.
 
-**Python:**
+Python:
 
 ```python
 if is_logged_in:
     print("Welcome")
 ```
 
-**DTL:**
+DTL:
 
 ```django
 {% if is_logged_in %}
@@ -215,11 +213,11 @@ Welcome
 
 > Very similar.
 
----
+#
 
-## `{% else %}`
+### `{% else %}`
 
-**View:**
+View:
 
 ```python
 context = {
@@ -227,7 +225,7 @@ context = {
 }
 ```
 
-**Template:**
+Template:
 
 ```django
 {% if is_logged_in %}
@@ -241,15 +239,15 @@ context = {
 {% endif %}
 ```
 
-**Output:**
+Output:
 
 ```html
 Please Login
 ```
 
-### Now make it True.
+**Now make it True.**
 
-**Output becomes**
+Output becomes
 
 ```html
 Welcome
@@ -257,9 +255,9 @@ Welcome
 
 ---
 
-## `{% elif %}`
+### `{% elif %}`
 
-**Suppose**
+Suppose
 
 ```python
 context = {
@@ -267,7 +265,7 @@ context = {
 }
 ```
 
-**Template:**
+Template:
 
 ```django
 {% if marks >= 80 %}
@@ -285,7 +283,7 @@ Fail
 {% endif %}
 ```
 
-**Output:**
+Output:
 
 ```
 Grade A
@@ -336,16 +334,16 @@ Docker
 
 #
 
-### Think of it exactly like Python.
+**Think of it exactly like Python.**
 
-**Python:**
+Python:
 
 ```python
 for course in courses:
     print(course)
 ```
 
-**Template:**
+Template:
 
 ```django
 {% for course in courses %}
@@ -357,7 +355,7 @@ for course in courses:
 
 #
 
-### Example with HTML
+**Example with HTML**
 
 ```django
 <ul>
@@ -371,7 +369,7 @@ for course in courses:
 </ul>
 ```
 
-**Output**
+Output
 
 ```html
 <ul>
@@ -391,7 +389,7 @@ for course in courses:
 
 ---
 
-# Part 3 — Accessing Dictionary Values
+## Part 3 — Accessing Dictionary Values
 
 **View:**
 
@@ -435,17 +433,17 @@ Dhaka
 25
 ```
 
----
+#
 
-## Why Dot Notation?
+### Why Dot Notation?
 
-**Python:**
+Python:
 
 ```python
 student["name"]
 ```
 
-**Django Template:**
+Django Template:
 
 ```django
 student.name
@@ -488,9 +486,9 @@ student.age
 
 ---
 
-# Complete Example
+## Complete Example
 
-## views.py
+### views.py
 
 ```python
 from django.shortcuts import render
@@ -517,9 +515,9 @@ def home(request):
     return render(request, "home.html", context)
 ```
 
----
+#
 
-## home.html
+### home.html
 
 ```django
 {% extends "base.html" %}
@@ -694,3 +692,5 @@ You've now learned the core pieces of the presentation layer:
 * ✅ Django Template Language
 
 The next lesson is where we'll start working with data by learning **`models.py`**. We'll begin by creating a single model, understanding what a model represents, and seeing how it relates to a database table—without rushing into CRUD. This foundation will make the database side of Django much easier to understand.
+
+---
