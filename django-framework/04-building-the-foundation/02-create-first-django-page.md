@@ -366,19 +366,19 @@ return render(request, "home.html")
 
 - **Insert below code:**
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Home</title>
+  </head>
+  <body>
 
-    <h1>Welcome to Django</h1>
+      <h1>Welcome to Django</h1>
 
-</body>
-</html>
-```
+  </body>
+  </html>
+  ```
 
 ---
 
