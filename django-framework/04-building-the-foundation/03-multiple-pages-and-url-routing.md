@@ -136,7 +136,7 @@ By the end of this lesson, you will understand:
 
   * Each function is responsible for **one page only**.
 
-- Think of it like this:
+- **Think of it like this:**
 
   ```
   home()    → Home page
@@ -150,272 +150,270 @@ By the end of this lesson, you will understand:
 
 ## Step 4: Update `urls.py`
 
-Open:
+- **Open:**
 
-```text
-myapp/urls.py
-```
+  ```text
+  myapp/urls.py
+  ```
 
-Update it:
+- **Update it:**
 
-```python
-from django.urls import path
-from . import views
+  ```python
+  from django.urls import path
+  from . import views
 
-urlpatterns = [
-    path("", views.home),
+  urlpatterns = [
+      path("", views.home),
 
-    path("about/", views.about),
+      path("about/", views.about),
 
-    path("contact/", views.contact),
-]
-```
+      path("contact/", views.contact),
+  ]
+  ```
 
-Let's understand each line.
-
----
-
-### First URL
-
-```python
-path("", views.home)
-```
-
-Matches:
-
-```
-http://127.0.0.1:8000/
-```
 
 ---
 
-### Second URL
+### Let's understand each line
 
-```python
-path("about/", views.about)
-```
+- **First URL**
 
-Matches:
+  ```python
+  path("", views.home)
+  ```
 
-```
-http://127.0.0.1:8000/about/
-```
+  Matches:
 
----
+  ```
+  http://127.0.0.1:8000/
+  ```
 
-### Third URL
+#
 
-```python
-path("contact/", views.contact)
-```
+- **Second URL**
 
-Matches:
+  ```python
+  path("about/", views.about)
+  ```
 
-```
-http://127.0.0.1:8000/contact/
-```
+  Matches:
 
----
+  ```
+  http://127.0.0.1:8000/about/
+  ```
 
-# Visualizing URL Matching
+#
 
-Imagine Django reads the URLs from top to bottom.
+- **Third URL**
 
-```
-User requests:
+  ```python
+  path("contact/", views.contact)
+  ```
 
-/about/
+  Matches:
 
-↓
-
-Check first rule
-
-""
-
-No match
-
-↓
-
-Check second rule
-
-"about/"
-
-Match found ✅
-
-↓
-
-Run
-
-views.about()
-
-↓
-
-Render about.html
-```
+  ```
+  http://127.0.0.1:8000/contact/
+  ```
 
 ---
 
-Another example:
+### Visualizing URL Matching
 
-```
-User requests:
+- **Imagine Django reads the URLs from top to bottom.**
 
-/contact/
+  ```
+  User requests:
 
-↓
+  /about/
 
-Check ""
+  ↓
 
-No
+  Check first rule
 
-↓
+  ""
 
-Check "about/"
+  No match
 
-No
+  ↓
 
-↓
+  Check second rule
 
-Check "contact/"
+  "about/"
 
-Yes ✅
+  Match found ✅
 
-↓
+  ↓
 
-views.contact()
+  Run
 
-↓
+  views.about()
 
-contact.html
-```
+  ↓
 
----
+  Render about.html
+  ```
 
-# Step 5: Test Everything
+#
 
-Run:
+- **Another example:**
 
-```bash
-python manage.py runserver
-```
+  ```
+  User requests:
 
-Visit:
+  /contact/
 
-```
-http://127.0.0.1:8000/
-```
+  ↓
 
-Output:
+  Check ""
 
-```
-Home Page
-```
+  No
 
----
+  ↓
 
-Visit:
+  Check "about/"
 
-```
-http://127.0.0.1:8000/about/
-```
+  No
 
-Output:
+  ↓
 
-```
-About Page
-```
+  Check "contact/"
 
----
+  Yes ✅
 
-Visit:
+  ↓
 
-```
-http://127.0.0.1:8000/contact/
-```
+  views.contact()
 
-Output:
+  ↓
 
-```
-Contact Page
-```
-
-Congratulations! 🎉
-
-You now have a mini website with three pages.
+  contact.html
+  ```
 
 ---
 
-# New Concept: URL Names
+## Step 5: Test Everything
 
-So far, our URLs look like this:
+- **Run:**
 
-```python
-urlpatterns = [
-    path("", views.home),
+  ```bash
+  python manage.py runserver
+  ```
 
-    path("about/", views.about),
+- **Visit:**
 
-    path("contact/", views.contact),
-]
-```
+  ```
+  http://127.0.0.1:8000/
+  ```
 
-This works, but Django encourages us to **name our URLs**.
+- **Output:**
 
-Update it to:
+  ```
+  Home Page
+  ```
 
-```python
-urlpatterns = [
-    path("", views.home, name="home"),
+#
 
-    path("about/", views.about, name="about"),
+- **Visit:**
 
-    path("contact/", views.contact, name="contact"),
-]
-```
+  ```
+  http://127.0.0.1:8000/about/
+  ```
+
+- **Output:**
+
+  ```
+  About Page
+  ```
+
+#
+
+- **Visit:**
+
+  ```
+  http://127.0.0.1:8000/contact/
+  ```
+
+- **Output:**
+
+  ```
+  Contact Page
+  ```
+
+>Congratulations! 🎉\
+>You now have a mini website with three pages.
+
+---
+
+## New Concept: URL Names
+
+- So far, our URLs look like this:
+
+  ```python
+  urlpatterns = [
+      path("", views.home),
+
+      path("about/", views.about),
+
+      path("contact/", views.contact),
+  ]
+  ```
+
+  > This works, but Django encourages us to **name our URLs**.
+
+- Update it to:
+
+  ```python
+  urlpatterns = [
+      path("", views.home, name="home"),
+
+      path("about/", views.about, name="about"),
+
+      path("contact/", views.contact, name="contact"),
+  ]
+  ```
+
+#
 
 ### What is `name`?
 
-The `name` is a unique identifier for a URL.
+- The `name` is a unique identifier for a URL.
+- Think of it like a **nickname**.
+- Instead of saying:
+  > "Go to `/about/`"
 
-Think of it like a nickname.
-
-Instead of saying:
-
-> "Go to `/about/`"
-
-you can say:
-
-> "Go to the URL named `about`."
+- you can say:
+  > "Go to the URL named `about`."
 
 ---
 
-# Why Use URL Names?
+## Why Use URL Names?
 
-Imagine you hardcode links in many templates:
+- Imagine you hardcode links in many templates:
 
-```html
-<a href="/about/">About</a>
-```
+  ```html
+  <a href="/about/">About</a>
+  ```
 
-Later, your manager says:
+- Later, your manager says:
+  ```
+  Change the URL from /about/ to /company/about-us/.
+  ```
+  > Without **URL names**, you must update every **hardcoded** link.
 
-> Change the URL from `/about/` to `/company/about-us/`.
+- With URL names, you only change one place:
 
-Without URL names, you must update every hardcoded link.
+  ```python
+  path("company/about-us/", views.about, name="about")
+  ```
 
-With URL names, you only change one place:
+  - Every link that uses the name `"about"` will automatically point to the new URL.
 
-```python
-path("company/about-us/", views.about, name="about")
-```
-
-Every link that uses the name `"about"` will automatically point to the new URL.
-
-This is one of Django's strengths: **you reference URLs by name instead of by hardcoded paths**.
+  - This is one of Django's strengths: **you reference URLs by name instead of by hardcoded paths**.
 
 ---
 
-# Summary
+## Summary
 
 Here's what you learned today:
 
@@ -427,41 +425,41 @@ Here's what you learned today:
 
 ---
 
-# Request Flow Example
+## Request Flow Example
 
-When you visit:
+- When you visit:
 
-```
-http://127.0.0.1:8000/contact/
-```
+  ```
+  http://127.0.0.1:8000/contact/
+  ```
 
-The flow is:
+- The flow is:
 
-```
-Browser
-    │
-    ▼
-Project urls.py
-    │
-    ▼
-App urls.py
-    │
-    ▼
-path("contact/", views.contact)
-    │
-    ▼
-views.contact(request)
-    │
-    ▼
-render(request, "contact.html")
-    │
-    ▼
-Browser displays Contact Page
-```
+  ```
+  Browser
+      │
+      ▼
+  Project urls.py
+      │
+      ▼
+  App urls.py
+      │
+      ▼
+  path("contact/", views.contact)
+      │
+      ▼
+  views.contact(request)
+      │
+      ▼
+  render(request, "contact.html")
+      │
+      ▼
+  Browser displays Contact Page
+  ```
 
 ---
 
-# Homework (Hands-on)
+## Homework (Hands-on)
 
 Before we move to the next lesson, I want you to do three small tasks on your own:
 
