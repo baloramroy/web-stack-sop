@@ -63,7 +63,7 @@ or
 
 ### `{{ }}` → Display Data
 
-Example:
+**Example:**
 
 ```django
 {{ name }}
@@ -73,13 +73,13 @@ This means:
 
 > Show the value.
 
-Think:
+**Think:**
 
 ```text
 Display something
 ```
 
-Examples:
+**Examples:**
 
 ```django
 {{ name }}
@@ -99,7 +99,7 @@ Examples:
 
 ### `{% %}` → Perform Logic
 
-Examples:
+**Examples:**
 
 ```django
 {% if %}
@@ -121,7 +121,7 @@ Examples:
 
 - They tell Django to **do something**.
 
-Think:
+**Think:**
 
 ```text
 Action
@@ -146,7 +146,9 @@ Control
 
 ---
 
-## Part 1 — `{% if %}`
+## Part 1
+
+### `{% if %}`
 
 **Suppose your view is:**
 
@@ -194,14 +196,14 @@ def home(request):
 
 ### Think of it like Python.
 
-Python:
+**Python:**
 
 ```python
 if is_logged_in:
     print("Welcome")
 ```
 
-DTL:
+**DTL:**
 
 ```django
 {% if is_logged_in %}
@@ -213,11 +215,11 @@ Welcome
 
 > Very similar.
 
-#
+---
 
 ### `{% else %}`
 
-View:
+**View:**
 
 ```python
 context = {
@@ -225,7 +227,7 @@ context = {
 }
 ```
 
-Template:
+**Template:**
 
 ```django
 {% if is_logged_in %}
@@ -239,7 +241,7 @@ Template:
 {% endif %}
 ```
 
-Output:
+**Output:**
 
 ```html
 Please Login
@@ -257,7 +259,7 @@ Welcome
 
 ### `{% elif %}`
 
-Suppose
+**Suppose**
 
 ```python
 context = {
@@ -265,7 +267,7 @@ context = {
 }
 ```
 
-Template:
+**Template:**
 
 ```django
 {% if marks >= 80 %}
@@ -283,7 +285,7 @@ Fail
 {% endif %}
 ```
 
-Output:
+**Output:**
 
 ```
 Grade A
@@ -293,7 +295,9 @@ Grade A
 
 ---
 
-## Part 2 — `{% for %}`
+## Part 2
+
+### `{% for %}`
 
 ◼️ **NOTE:** This is probably the most used template tag after `if`.
 
@@ -334,16 +338,16 @@ Docker
 
 #
 
-**Think of it exactly like Python.**
+### Think of it exactly like Python
 
-Python:
+**Python:**
 
 ```python
 for course in courses:
     print(course)
 ```
 
-Template:
+**Template:**
 
 ```django
 {% for course in courses %}
@@ -352,8 +356,6 @@ Template:
 
 {% endfor %}
 ```
-
-#
 
 **Example with HTML**
 
@@ -369,7 +371,7 @@ Template:
 </ul>
 ```
 
-Output
+**Output**
 
 ```html
 <ul>
@@ -389,7 +391,9 @@ Output
 
 ---
 
-## Part 3 — Accessing Dictionary Values
+## Part 3
+
+### Accessing Dictionary Values
 
 **View:**
 
@@ -437,13 +441,13 @@ Dhaka
 
 ### Why Dot Notation?
 
-Python:
+**Python:**
 
 ```python
 student["name"]
 ```
 
-Django Template:
+**Django Template:**
 
 ```django
 student.name
@@ -591,31 +595,31 @@ Browser
 
 ◼️ Templates are **not** meant for complex programming.
 
-**Good:**
+Good:
 
 ```django
 {{ student.name }}
 ```
 
-**Good:**
+Good:
 
 ```django
 {% if is_logged_in %}
 ```
 
-**Good:**
+Good:
 
 ```django
 {% for course in courses %}
 ```
 
-**Bad:**
+Bad:
 
 ```django
 {{ student.calculate_salary() }}
 ```
 
-**Bad:**
+Bad:
 
 ```django
 {{ my_python_function() }}
