@@ -1,5 +1,19 @@
 # Understanding Node.js, npm, and npx
 
+## Learning Objective
+
+By the end of this lesson, we will be able to answer:
+
+* What is Node.js?
+* What is npm?
+* Why do we need Node.js for Next.js?
+* What does `create-next-app` do?
+* How do we run a Next.js application?
+
+---
+
+## Before We Install Anything
+
 Many beginners think they only install Node.js, but the installer actually gives you three important tools:
 
 ```
@@ -16,7 +30,7 @@ Each has a different purpose.
 
 ## 1. What is Node.js?
 
-Normally, JavaScript runs only inside a web browser.
+Normally, JavaScript(a programming language) runs only inside a web browser.
 
 - For example:
 
@@ -52,6 +66,36 @@ Node.js is a JavaScript runtime that lets you execute JavaScript on your operati
   ```
 
 Here, the `node` command runs your JavaScript file.
+
+#
+
+### Why does Next.js need Node.js?
+
+When you create a Next.js project, you're not just opening an HTML file.
+
+- **Next.js needs to:**
+
+  * Compile your code
+  * Bundle your files
+  * Start a development server
+  * Watch for changes
+  * Install packages
+
+  Those tasks are handled by Node.js.
+
+- **Think of it this way:**
+
+  ```
+  Your Code
+        ↓
+  Next.js
+        ↓
+  Node.js
+        ↓
+  Operating System
+  ```
+
+>Without Node.js, Next.js cannot run.
 
 ---
 
@@ -146,6 +190,7 @@ That's why you'll see `npx` used frequently in modern JavaScript development.
 * **npm** manages packages.
 * **npx** runs package executables without a global install.
 
+
 ---
 
 ## What Happens When You Create a Next.js Project?
@@ -180,6 +225,44 @@ That's why you'll see `npx` used frequently in modern JavaScript development.
   ▼
   Your Next.js project is ready
   ```
+
+---
+
+## What is the Development Server?
+
+- When you run:
+
+  ```bash
+  npm run dev
+  ```
+
+  >Node.js starts a local web server.
+
+- For example:
+
+  ```
+  http://localhost:3000
+  ```
+
+  >Now your browser can access your application.
+
+- The flow looks like this:
+
+  ```
+  You
+      ↓
+  npm run dev
+      ↓
+  Node.js
+      ↓
+  Next.js Development Server
+      ↓
+  localhost:3000
+      ↓
+  Browser
+  ```
+
+This server automatically reloads your application whenever you save a file, making development much faster.
 
 ---
 
