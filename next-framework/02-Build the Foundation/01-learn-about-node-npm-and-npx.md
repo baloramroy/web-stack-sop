@@ -264,47 +264,6 @@ That's why you'll see `npx` used frequently in modern JavaScript development.
 
 This server automatically reloads your application whenever you save a file, making development much faster.
 
----
-
-## Verify Your Installation
-
-- Open a terminal and run:
-
-  ```bash
-  node -v
-  ```
-
-- You should see something like:
-
-  ```
-  v22.x.x
-  ```
-
-- Then:
-
-  ```bash
-  npm -v
-  ```
-
-- Example:
-
-  ```
-  10.x.x
-  ```
-
-- Then:
-
-  ```bash
-  npx -v
-  ```
-
-- Example:
-
-  ```
-  10.x.x
-  ```
-
->If all three commands return version numbers, your installation is working correctly.
 
 ---
 
