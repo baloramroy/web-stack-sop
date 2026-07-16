@@ -1,4 +1,4 @@
-# Lesson 2: Create Your First Next.js Project
+# Lesson 1: Create Your First Next.js Project
 
 ## Objective
 
