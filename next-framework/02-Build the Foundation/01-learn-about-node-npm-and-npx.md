@@ -1,4 +1,4 @@
-# Lesson 0: Understanding Node.js, npm, and npx
+# Lesson 1: Understanding Node.js, npm, and npx
 
 ## Learning Objective
 
