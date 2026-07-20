@@ -1,3 +1,5 @@
+Phase 1 — Build the Foundation
+
 # Lesson 2: Create Your First Next.js Project
 
 ## Objective
