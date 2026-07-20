@@ -1,3 +1,5 @@
+Phase 1 — Build the Foundation
+
 # Lesson 1: Understanding Node.js, npm, and npx
 
 ## Learning Objective
