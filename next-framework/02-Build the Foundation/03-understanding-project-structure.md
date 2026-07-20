@@ -1,5 +1,6 @@
+Phase 1 — Build the Foundation
 
-# Lesson 2: Understanding The Project Structure
+# Lesson 3: Understanding The Project Structure
 
 ## Objective
 
