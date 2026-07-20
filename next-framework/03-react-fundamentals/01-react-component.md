@@ -1,6 +1,6 @@
 Phase 2 — React Fundamentals
 
-# Step 1 – Your First Component
+# Lesson 1 – Your First Component
 
 ## Goal of This Lesson
 
@@ -18,9 +18,9 @@ Nothing more.
 
 ## Before We Learn Components…
 
-Let's understand **why React was created.**
+**Let's understand why React was created.**
 
-- Imagine you want to build a website like Amazon.
+Imagine you want to build a website like Amazon.
 - The page contains:
 
 	```text
@@ -42,7 +42,7 @@ Let's understand **why React was created.**
 	Footer
 	```
 
-- Now imagine you need to create **100 product cards**.
+**Now imagine you need to create 100 product cards.**
 - Without React, you might copy and paste the same HTML over and over:
 
 	```html
@@ -69,38 +69,38 @@ Let's understand **why React was created.**
 
 	> "Please add a ⭐ icon to every product card."
 
-- Now you might have to edit hundreds of places.
-- Not ideal.
+- Now you might have to edit hundreds of places.\
+  `Not ideal.`
 
 ---
 
 ## The React Solution
 
-React says:
+- React says:
 
-> **Instead of repeating HTML, create reusable pieces called Components.**
+	> **Instead of repeating HTML, create reusable pieces called Components.**
 
 - Think of a component as a **blueprint**.
 
-Example:
+	Example:
 
-```text
-Product Card
-```
+	```text
+	Product Card
+	```
 
-Instead of writing the HTML 100 times:
+	Instead of writing the HTML 100 times:
 
-```text
-Product Card
+	```text
+	Product Card
 
-Product Card
+	Product Card
 
-Product Card
+	Product Card
 
-Product Card
+	Product Card
 
-Product Card
-```
+	Product Card
+	```
 
 - Each one can display different information while using the same structure.
 
@@ -111,19 +111,19 @@ Product Card
 - Imagine building a house.
 - A house has many reusable parts:
 
-```text
-Door
+	```text
+	Door
 
-Window
+	Window
 
-Chair
+	Chair
 
-Table
+	Table
 
-Fan
+	Fan
 
-Light
-```
+	Light
+	```
 
 - You don't build a new kind of chair every time.
 - You reuse the same design.
@@ -163,22 +163,22 @@ Light
 
 ## What Is a Component?
 
-A component is simply:
+- A component is simply:
 
-> **A reusable piece of UI (User Interface).**
+	> **A reusable piece of UI (User Interface).**
 
-Examples:
+- Examples:
 
-- Navbar
-- Footer
-- Login Form
-- Button
-- Product Card
-- User Profile
-- Search Box
-- Sidebar
+	- Navbar
+	- Footer
+	- Login Form
+	- Button
+	- Product Card
+	- User Profile
+	- Search Box
+	- Sidebar
 
-Each of these is a component.
+- Each of these is a component.
 
 ---
 
@@ -191,7 +191,7 @@ Each of these is a component.
 	/
 	```
 
-	is actually a React component.
+	> is actually a React component.
 
 - When you open:
 
@@ -205,61 +205,60 @@ Each of these is a component.
 	page.tsx
 	```
 
-	Inside that file is a React component.
+	> Inside that file is a React component.
 
-So when you write Next.js, you are really writing React components.
+- So when you write Next.js, you are really writing React components.
 
 ---
 
 ## Your First Component
 
-Here is the simplest possible React component:
+**Here is the simplest possible React component:**
 
 ```jsx
 function Welcome() {
-    return <h1>Hello World</h1>;
+		return <h1>Hello World</h1>;
 }
 ```
 
-Let's understand it line by line.
+#
 
-```jsx
-function Welcome() {
-```
+- **Let's understand it line by line.**
 
-This creates a JavaScript function named `Welcome`.
+	```jsx
+	function Welcome() {
+	```
 
----
+	> This creates a JavaScript function named `Welcome`.
 
-```jsx
-return
-```
 
-This tells React:
+- Then `return`
 
-> "This is what I want to display on the screen."
+	```jsx
+	return
+	```
+	> This tells React: \
+	> "This is what I want to display on the screen."
 
----
+- Then:
 
-```jsx
-<h1>Hello World</h1>
-```
+	```jsx
+	<h1>Hello World</h1>
+	```
+	> This is the UI the component returns.
+#
 
-This is the UI the component returns.
+- So:
 
----
+	```jsx
+	function Welcome() {
+			return <h1>Hello World</h1>;
+	}
+	```
 
-So:
+- means:
 
-```jsx
-function Welcome() {
-    return <h1>Hello World</h1>;
-}
-```
-
-means:
-
-> Create a reusable UI block that displays **Hello World**.
+	> Create a reusable UI block that displays **Hello World**.
 
 ---
 
