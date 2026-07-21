@@ -223,7 +223,9 @@ function Welcome() {
 
 #
 
-- **Let's understand it line by line.**
+**Let's understand it line by line.**
+
+- First `welcome()` function:
 
 	```jsx
 	function Welcome() {
@@ -232,7 +234,7 @@ function Welcome() {
 	> This creates a JavaScript function named `Welcome`.
 
 
-- Then `return`
+- Then `return` command:
 
 	```jsx
 	return
@@ -240,11 +242,12 @@ function Welcome() {
 	> This tells React: \
 	> "This is what I want to display on the screen."
 
-- Then:
+- Then `html` block:
 
 	```jsx
 	<h1>Hello World</h1>
 	```
+	> This tells React: \
 	> This is the UI the component returns.
 #
 
@@ -264,17 +267,19 @@ function Welcome() {
 
 ## Visual Representation
 
-```text
-Welcome Component
+- Like: 
 
-        │
+	```text
+	Welcome Component
 
-        ▼
+			│
 
-+----------------------+
-|     Hello World      |
-+----------------------+
-```
+			▼
+
+	+----------------------+
+	|     Hello World      |
+	+----------------------+
+	```
 
 ---
 
@@ -282,27 +287,27 @@ Welcome Component
 
 - If you already know JavaScript functions:
 
-```javascript
-function add(a, b) {
-    return a + b;
-}
-```
+	```javascript
+	function add(a, b) {
+			return a + b;
+	}
+	```
 
 - A React component follows the same idea:
 
-```jsx
-function Welcome() {
-    return <h1>Hello</h1>;
-}
-```
+	```jsx
+	function Welcome() {
+			return <h1>Hello</h1>;
+	}
+	```
 
 - The key difference is:
 
-| JavaScript Function | React Component             |
-| ------------------- | --------------------------- |
-| Returns a number    | Returns UI                  |
-| Returns a string    | Returns HTML-like markup    |
-| Used for logic      | Used to build the interface |
+	| JavaScript Function | React Component             |
+	| ------------------- | --------------------------- |
+	| Returns a number    | Returns UI                  |
+	| Returns a string    | Returns HTML-like markup    |
+	| Used for logic      | Used to build the interface |
 
 ---
 
@@ -310,27 +315,27 @@ function Welcome() {
 
 A component name **must start with a capital letter**.
 
-✅ Correct:
+- ✅ Correct:
 
-```jsx
-function Welcome() {}
-```
+	```jsx
+	function Welcome() {}
+	```
 
-```jsx
-function ProductCard() {}
-```
+	```jsx
+	function ProductCard() {}
+	```
 
-```jsx
-function Navbar() {}
-```
+	```jsx
+	function Navbar() {}
+	```
 
-❌ Incorrect:
+- ❌ Incorrect:
 
-```jsx
-function welcome() {}
-```
+	```jsx
+	function welcome() {}
+	```
 
-React treats lowercase names differently (as HTML elements), so using PascalCase for component names is the convention.
+> React treats lowercase names differently (as HTML elements), so using PascalCase for component names is the convention.
 
 ---
 
