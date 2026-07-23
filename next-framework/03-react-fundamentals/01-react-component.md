@@ -1,4 +1,4 @@
-Phase 2 — React Fundamentals
+**Phase 2 — React Fundamentals**
 
 # Lesson 1 – Your First Component
 
