@@ -1,4 +1,6 @@
-Perfect. You're progressing at exactly the right pace.
+**Phase 2 – React Fundamentals**
+
+# Lesson 5 – Understanding Events
 
 So far you've learned:
 
@@ -10,10 +12,6 @@ So far you've learned:
 Now it's time to connect everything together.
 
 ---
-
-# Phase 2 – React Fundamentals
-
-## Step 8 – Understanding Events
 
 ### Goal of This Lesson
 
