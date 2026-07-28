@@ -15,7 +15,7 @@ Today we'll learn another fundamental concept that you'll use almost every day.
 ---
 
 
-### Goal of This Lesson
+## Goal of This Lesson
 
 By the end of this lesson, you should be able to answer:
 
@@ -31,7 +31,7 @@ We won't discuss filtering, sorting, or APIs yet.
 
 ---
 
-# Before Learning Lists...
+## Before Learning Lists...
 
 Imagine you're building an online store.
 
@@ -71,7 +71,7 @@ How would you do this?
 
 ---
 
-# Without React Lists
+## Without React Lists
 
 You might write:
 
@@ -103,7 +103,7 @@ Of course not.
 
 ---
 
-# The Real Situation
+## The Real Situation
 
 In real applications, the products usually come as data.
 
@@ -127,7 +127,7 @@ Instead of writing every card yourself, you want React to create them automatica
 
 ---
 
-# The React Solution
+## The React Solution
 
 React says:
 
@@ -137,7 +137,7 @@ This process is called **Rendering a List**.
 
 ---
 
-# What is Rendering?
+## What is Rendering?
 
 You've heard the word "render" several times.
 
@@ -161,7 +161,7 @@ UI appears
 
 ---
 
-# What is a List?
+## What is a List?
 
 A list is simply:
 
@@ -169,237 +169,230 @@ A list is simply:
 
 Examples:
 
-Products
+- Products
 
-```text
-Phone A
+  ```text
+  Phone A
 
-Phone B
+  Phone B
 
-Phone C
-```
+  Phone C
+  ```
 
-Users
+- Users
 
-```text
-Alice
+  ```text
+  Alice
 
-Bob
+  Bob
 
-Charlie
-```
+  Charlie
+  ```
 
-Messages
+- Messages
 
-```text
-Hello
+  ```text
+  Hello
 
-How are you?
+  How are you?
 
-See you tomorrow
-```
+  See you tomorrow
+  ```
 
-Orders
+- Orders
 
-```text
-Order #101
+  ```text
+  Order #101
 
-Order #102
+  Order #102
 
-Order #103
-```
+  Order #103
+  ```
 
 React displays these collections using list rendering.
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Imagine a bakery.
 
-A customer orders:
+- A customer orders:
 
-```text
-10 Cookies
-```
+  ```text
+  10 Cookies
+  ```
 
-The baker doesn't make ten different recipes.
+  The baker doesn't make ten different recipes.
 
-The baker uses:
+- The baker uses:
 
-```text
-One Recipe
+  ```text
+  One Recipe
 
-↓
+  ↓
 
-Repeat
+  Repeat
 
-↓
+  ↓
 
-10 Cookies
-```
+  10 Cookies
+  ```
 
 React works exactly the same way.
 
-One component.
-
-Many pieces of data.
-
-Many UI elements.
+- One component.
+- Many pieces of data.
+- Many UI elements.
 
 ---
 
-# Another Analogy
+## Another Analogy
 
 Imagine a school printing report cards.
 
-The report card design is always the same.
+- The report card design is always the same.
 
-```text
-----------------
+  ```text
+  ----------------
 
-Name:
+  Name:
 
-Class:
+  Class:
 
-Marks:
+  Marks:
 
-----------------
-```
+  ----------------
+  ```
 
-Only the student information changes.
+- Only the student information changes.
 
-```text
-Student 1
+  ```text
+  Student 1
 
-↓
+  ↓
 
-Report Card
-```
+  Report Card
+  ```
 
-```text
-Student 2
+  ```text
+  Student 2
 
-↓
+  ↓
 
-Report Card
-```
+  Report Card
+  ```
 
-```text
-Student 3
+  ```text
+  Student 3
 
-↓
+  ↓
 
-Report Card
-```
+  Report Card
+  ```
 
-The template stays the same.
-
-The data changes.
+- The template stays the same.
+- The data changes.
 
 That's list rendering.
 
 ---
 
-# Arrays
+## Arrays
 
 React usually renders lists from an **array**.
 
-Example:
+- Example:
 
-```javascript
-const products = [
-    "iPhone 16",
-    "Galaxy S25",
-    "Pixel 10"
-];
-```
+  ```javascript
+  const products = [
+      "iPhone 16",
+      "Galaxy S25",
+      "Pixel 10"
+  ];
+  ```
+- You don't need to learn arrays today.
 
-You don't need to learn arrays today.
-
-Just understand:
-
-An array is a collection of values.
+Just understand:\
+`An array is a collection of values.`
 
 ---
 
-# Why `map()`?
+## Why `map()`?
 
-Imagine you have:
+- Imagine you have:
 
-```text
-Apple
+  ```text
+  Apple
 
-Banana
+  Banana
 
-Orange
-```
+  Orange
+  ```
 
-React needs to create:
+- React needs to create UI for each:
 
-```text
-🍎 Apple
+  ```text
+  🍎 Apple
 
-🍌 Banana
+  🍌 Banana
 
-🍊 Orange
-```
+  🍊 Orange
+  ```
 
-It needs to repeat the same UI for every item.
+- It needs to repeat the same UI for every item.
+- But JavaScript already has a method that repeats work for every item in an array.
+- That method is:
 
-JavaScript already has a method that repeats work for every item in an array.
-
-That method is:
-
-```javascript
-map()
-```
+  ```javascript
+  map()
+  ```
 
 ---
 
-# Think of `map()` Like a Factory
+## Think of `map()` Like a Factory
 
 Imagine a factory.
 
-Raw materials enter:
+- Raw materials enter:
 
-```text
-Apple
+  ```text
+  Apple
 
-Banana
+  Banana
 
-Orange
-```
+  Orange
+  ```
 
-The machine performs the same process on each item.
+- The machine performs the same process on each item.
 
-Output:
+  Output:
 
-```text
-Juice
+  ```text
+  Juice
 
-Juice
+  Juice
 
-Juice
-```
+  Juice
+  ```
 
 `map()` works similarly.
 
-Input:
+- Input:
 
-```text
-Data
-```
+  ```text
+  Data
+  ```
 
-Output:
+- Output:
 
-```text
-UI
-```
+  ```text
+  UI
+  ```
 
 ---
 
-# Visual Flow
+## Visual Flow
 
 ```text
 Products Array
@@ -427,83 +420,82 @@ Screen
 
 ---
 
-# A Simple Example
+## A Simple Example
 
-Imagine this array:
+- Imagine this array:
 
-```javascript
-const names = [
-    "Alice",
-    "Bob",
-    "Charlie"
-];
-```
+  ```javascript
+  const names = [
+      "Alice",
+      "Bob",
+      "Charlie"
+  ];
+  ```
 
-React uses `map()` to create:
+- React uses `map()` to create:
 
-```text
-Hello Alice
+  ```text
+  Hello Alice
 
-Hello Bob
+  Hello Bob
 
-Hello Charlie
-```
+  Hello Charlie
+  ```
 
 Notice something.
 
-You didn't write:
+- You didn't write:
 
-```jsx
-<h1>Hello Alice</h1>
+  ```jsx
+  <h1>Hello Alice</h1>
 
-<h1>Hello Bob</h1>
+  <h1>Hello Bob</h1>
 
-<h1>Hello Charlie</h1>
-```
+  <h1>Hello Charlie</h1>
+  ```
 
 React generated them from the data.
 
 ---
 
-# What is `key`?
+## What is `key`?
 
-Now imagine these products:
+- Now imagine these products:
 
-```text
-1. iPhone
+  ```text
+  1. iPhone
 
-2. Galaxy
+  2. Galaxy
 
-3. Pixel
-```
+  3. Pixel
+  ```
 
 Tomorrow the owner removes Galaxy.
 
-Now the list becomes:
+- Now the list becomes on UI:
 
-```text
-1. iPhone
+  ```text
+  1. iPhone
 
-2. Pixel
-```
+  2. Pixel
+  ```
 
-React has to figure out:
+- React has to figure out in UI:
 
-```text
-Which item disappeared?
+  ```text
+  Which item disappeared?
 
-Which item stayed?
+  Which item stayed?
 
-Which item moved?
-```
+  Which item moved?
+  ```
 
-Without extra information, React has to guess.
-
-That's inefficient.
+- Without extra information, React has to guess.
+- That's inefficient.
 
 ---
 
-# React's Solution
+## React's Solution
 
 React asks:
 
@@ -517,29 +509,25 @@ key
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Imagine a classroom.
+- Every student has:
 
-Every student has:
+  ```text
+  Name
 
-```text
-Name
+  Roll Number
+  ```
 
-Roll Number
-```
-
-The teacher identifies students by their **roll number**, not just by where they're sitting.
-
-Even if Alice moves to another seat, her roll number is still the same.
-
-React treats `key` the same way.
-
-It uses the key to identify each item.
+- The teacher identifies students by their **roll number**, not just by where they're sitting.
+- Even if Alice moves to another seat, her roll number is still the same.
+- React treats `key` the same way.
+- It uses the key to identify each item.
 
 ---
 
-# Visual Example
+## Visual Example
 
 Without keys:
 
@@ -553,7 +541,7 @@ Orange
 
 React only sees positions.
 
----
+#
 
 With keys:
 
@@ -569,39 +557,36 @@ Now React knows exactly which item is which.
 
 ---
 
-# Why is `key` Important?
+## Why is `key` Important?
 
-Suppose your shopping cart contains:
+- Suppose your shopping cart contains:
 
-```text
-Laptop
+  ```text
+  Laptop
 
-Mouse
+  Mouse
 
-Keyboard
-```
+  Keyboard
+  ```
 
-You remove:
+- You remove:
 
-```text
-Mouse
-```
+  ```text
+  Mouse
+  ```
 
-Without keys:
+- Without keys: \
+  React compares everything again.
 
-React compares everything again.
+- With keys: \
+  - React immediately knows:
+  - "Only the item with ID 102 was removed."
 
-With keys:
-
-React immediately knows:
-
-> "Only the item with ID 102 was removed."
-
-That makes updates much faster and more reliable.
+> That makes updates much faster and more reliable.
 
 ---
 
-# Mental Model
+## Mental Model
 
 ```text
 Array
@@ -629,7 +614,7 @@ Screen Updates Efficiently
 
 ---
 
-# How Everything Fits Together
+## How Everything Fits Together
 
 Let's connect what you've learned so far.
 
@@ -669,25 +654,25 @@ This is how many real-world applications display products, messages, notificatio
 
 ---
 
-# Important Rules
+## Important Rules
 
 ### Rule 1
 
 Lists are usually created from arrays.
 
----
+#
 
 ### Rule 2
 
 React commonly uses `map()` to create UI from arrays.
 
----
+#
 
 ### Rule 3
 
 Every item in a rendered list should have a unique `key`.
 
----
+#
 
 ### Rule 4
 
@@ -697,7 +682,7 @@ We'll discuss good and bad keys later.
 
 ---
 
-# Summary
+## Summary
 
 ```text
 Array
@@ -725,7 +710,7 @@ Efficient UI Updates
 
 ---
 
-# Mini Quiz
+## Mini Quiz
 
 Try answering these without looking back.
 
@@ -733,31 +718,31 @@ Try answering these without looking back.
 
 What does **rendering a list** mean?
 
----
+#
 
 ### 2.
 
 Why does React use `map()`?
 
----
+#
 
 ### 3.
 
 Where does the list usually come from?
 
----
+#
 
 ### 4.
 
 What is the purpose of the `key` prop?
 
----
+#
 
 ### 5.
 
 Why shouldn't React rely only on the item's position in the list?
 
----
+#
 
 ### 6.
 
@@ -785,7 +770,7 @@ React Updates UI
 
 ---
 
-# What You've Learned So Far
+## What You've Learned So Far
 
 | Step | Concept    | Purpose                            |
 | ---- | ---------- | ---------------------------------- |
@@ -800,7 +785,7 @@ Notice how the concepts are building on one another. Each lesson adds one new pi
 
 ---
 
-# Today's Assignment
+## Today's Assignment
 
 Make sure you can explain this flow:
 
@@ -832,7 +817,7 @@ If you understand **why `map()` exists** and **why React needs `key`**, you've c
 
 ---
 
-# Next Lesson (Step 10)
+## Next Lesson (Step 10)
 
 We'll learn **Conditional Rendering**.
 
