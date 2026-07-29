@@ -748,7 +748,7 @@ If you can explain that without looking at the notes, you've completed today's l
 
 ---
 
-# Next Lesson (Step 9)
+## Next Lesson
 
 We'll learn **Rendering Lists**.
 

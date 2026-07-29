@@ -1,6 +1,6 @@
 **Phase 2 – React Fundamentals**
 
-# Step 9 – Rendering Lists
+# Lesson 6 – Rendering Lists
 
 So far we've learned:
 
@@ -817,7 +817,7 @@ If you understand **why `map()` exists** and **why React needs `key`**, you've c
 
 ---
 
-## Next Lesson (Step 10)
+## Next Lesson
 
 We'll learn **Conditional Rendering**.
 

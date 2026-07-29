@@ -570,7 +570,7 @@ If you understand that flow and why `{}` are used, you've completed today's less
 
 ---
 
-## Next Lesson (Step 6)
+## Next Lesson
 
 We'll learn **Props**—one of the most important ideas in React.
 

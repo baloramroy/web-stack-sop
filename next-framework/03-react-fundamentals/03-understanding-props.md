@@ -501,7 +501,7 @@ If you understand that idea, you've completed today's lesson.
 
 ---
 
-## Next Lesson (Step 7)
+## Next Lesson
 
 We'll learn about **State (`useState`)**.
 

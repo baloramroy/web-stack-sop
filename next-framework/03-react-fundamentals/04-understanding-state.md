@@ -1,6 +1,6 @@
 **Phase 2 – React Fundamentals**
 
-# Step 7 – Understanding State (`useState`)
+# Lesson 4 – Understanding State (`useState`)
 
 ## Goal of This Lesson
 
@@ -545,7 +545,7 @@ If you can explain **why state exists** and how it's different from **props**, y
 
 ---
 
-## Next Lesson (Step 8)
+## Next Lesson
 
 We'll learn **Events in React**.
 

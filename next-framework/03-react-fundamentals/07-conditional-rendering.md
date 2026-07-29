@@ -1,6 +1,6 @@
 **Phase 2 – React Fundamentals**
 
-# Step 10 – Conditional Rendering
+# Lesson 7 – Conditional Rendering
 
 So far you've learned:
 
@@ -793,7 +793,7 @@ If you understand that **React doesn't manually show or hide things—you descri
 
 Before we move into **Phase 3 (App Router)**, I recommend one final React lesson that isn't on the original roadmap:
 
-> **Step 11 – The React Rendering Lifecycle**
+> **Lesson 8 – The React Rendering Lifecycle**
 
 We'll answer questions like:
 

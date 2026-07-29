@@ -367,7 +367,7 @@ Try answering these without looking back:
 
 ---
 
-### Next Lesson (Step 2)
+### Next Lesson
 
 We will learn **JSX**:
 

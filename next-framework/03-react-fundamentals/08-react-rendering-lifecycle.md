@@ -796,7 +796,7 @@ That means we can finally start learning **Next.js itself**.
 
 Our first lesson will be:
 
-### Step 12 – Your First Next.js Page
+### Step 1 – Your First Next.js Page
 
 We'll answer:
 
