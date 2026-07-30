@@ -129,14 +129,39 @@ Example:
 
 ---
 
+
 ## Step 4: Answer the Questions
 
 You'll see prompts similar to these.
 
-### 1. TypeScript
 
+### 1. Recommended Defaults
 
-Would you like to use `TypeScript`?
+**Prompt:**
+
+```text
+Would you like to use the recommended Next.js defaults?
+```
+
+Choose:
+
+```text
+No (Customize settings)
+```
+
+**Why?**
+
+Selecting **No** lets you review and understand each configuration option individually. This is the best approach while learning Next.js.
+
+---
+
+### 2. TypeScript
+
+**Prompt:**
+
+```text
+Would you like to use TypeScript?
+```
 
 Choose:
 
@@ -144,122 +169,185 @@ Choose:
 Yes
 ```
 
-### Why?
+**Why?**
 
-TypeScript helps catch mistakes while coding.
-
-Nearly all modern Next.js projects use it.
+TypeScript helps catch errors during development, improves code quality, and is the standard choice for most modern Next.js projects.
 
 ---
 
-### 2. ESLint
+### 3. ESLint
 
+**Prompt:**
 
-Would you like to use `ESLint`?
+```text
+Which linter would you like to use?
+```
 
 Choose:
 
 ```text
-Yes
+ESLint
 ```
 
-ESLint checks your code for mistakes and encourages consistent coding style.
+**Why?**
+
+ESLint analyzes your code for potential issues and helps maintain a consistent coding style across your project.
 
 ---
 
-### 3. Tailwind CSS
+### 4. React Compiler
 
-Would you like to use `Tailwind CSS`?
+**Prompt:**
+
+```text
+Would you like to use React Compiler?
+```
 
 Choose:
-
-```text
-Yes
-```
-
-Tailwind is a popular CSS framework. It is optional, but it's a good choice for learning modern Next.js development.
-
----
-
-### 4. src Directory
-
-
-Would you like your code inside a `src/` directory? Choose:
-
-```text
-Yes
-```
-
-This keeps your project organized.
-
-- Instead of:
-
-  ```text
-  app/
-  components/
-  ```
-
-- You'll have:
-
-  ```text
-  src/
-    app/
-    components/
-  ```
-
----
-
-### 5. App Router
-
-
-Would you like to use `App Router`? Choose:
-
-```text
-Yes
-```
-
-This is the modern routing system introduced in Next.js 13 and is now the standard.
-
----
-
-### 6. Turbopack
-
-Would you like to use `Turbopack` for `next dev`? Choose:
-
-```text
-Yes
-```
-
-Turbopack provides a faster development experience.
-
----
-
-## 7. Import Alias
-
-
-Would you like to customize the import `alias`? Choose:
 
 ```text
 No
 ```
 
-The default alias `@/*` is suitable for most projects.
+**Why?**
+
+React Compiler is a newer optimization feature. While promising, it's better to first understand how React works without automatic optimizations. You can enable it later when you're more experienced.
+
+---
+
+### 5. Tailwind CSS
+
+**Prompt:**
+
+```text
+Would you like to use Tailwind CSS?
+```
+
+Choose:
+
+```text
+Yes
+```
+
+**Why?**
+
+Tailwind CSS is one of the most widely used CSS frameworks in the React and Next.js ecosystem. It allows you to build modern, responsive interfaces efficiently.
+
+---
+
+### 6. `src` Directory
+
+**Prompt:**
+
+```text
+Would you like your code inside a `src/` directory?
+```
+
+Choose:
+
+```text
+Yes
+```
+
+**Why?**
+
+Using a `src` directory keeps your project organized, especially as it grows.
+
+Instead of:
+
+```text
+app/
+components/
+```
+
+You'll have:
+
+```text
+src/
+├── app/
+├── components/
+├── lib/
+└── styles/
+```
+
+---
+
+### 7. App Router
+
+**Prompt:**
+
+```text
+Would you like to use App Router? (recommended)
+```
+
+Choose:
+
+```text
+Yes
+```
+
+**Why?**
+
+App Router is the modern routing system introduced in Next.js 13 and is now the official standard for building new applications.
+
+---
+
+### 8. Import Alias
+
+**Prompt:**
+
+```text
+Would you like to customize the import alias (`@/*` by default)?
+```
+
+Choose:
+
+```text
+No
+```
+
+**Why?**
+
+The default alias (`@/*`) is already the recommended standard and works well for most projects.
+
+---
+
+### 9. AGENTS.md
+
+**Prompt:**
+
+```text
+Would you like to include AGENTS.md to guide coding agents to write up-to-date Next.js code?
+```
+
+Choose:
+
+```text
+No
+```
+
+**Why?**
+
+`AGENTS.md` is intended for AI coding assistants such as ChatGPT, GitHub Copilot Agent, Cursor, and Claude Code. Since you're learning Next.js and writing the code yourself, this file isn't necessary.
+
 
 ---
 
 ## Final Answers
 
-- Your selections should look like this:
+Your selections should look like this:
 
-  ```text
-  ✔ TypeScript?                     Yes
-  ✔ ESLint?                         Yes
-  ✔ Tailwind CSS?                   Yes
-  ✔ src/ directory?                 Yes
-  ✔ App Router?                     Yes
-  ✔ Turbopack?                      Yes
-  ✔ Customize import alias?         No
-  ```
+```text
+✔ Recommended Next.js defaults?    No (Customize settings)
+✔ TypeScript?                      Yes
+✔ Linter?                          ESLint
+✔ React Compiler?                  No
+✔ Tailwind CSS?                    Yes
+✔ src/ directory?                  Yes
+✔ App Router?                      Yes
+✔ Customize import alias?          No
+✔ Include AGENTS.md?               No
+```
 
 ---
 
