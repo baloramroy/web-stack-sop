@@ -1,6 +1,6 @@
 **Phase 4 — Styling**
 
-# Step 16 — Global CSS
+# Step 1 — Global CSS
 
 
 ## Lesson Goal

@@ -1,6 +1,6 @@
 **Phase 4 — Styling**
 
-# Step 17 — CSS Modules
+# Step 2 — CSS Modules
 
 ## Lesson Goal
 
