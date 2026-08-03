@@ -1,370 +1,510 @@
-Perfect. We'll stay consistent with the roadmap.
+Perfect. We'll continue **exactly according to your Next.js roadmap**.
 
-You have completed:
+We have completed:
 
 * ✅ Step 29 — Create Forms
 
-Now we'll start:
+Now we start:
 
-# **Phase 8 — Forms**
+# Phase 8 — Forms
 
-## **Step 30 — Handle Form Submission**
+# Step 30 — Handle Form Submission
 
-This is one of the most important concepts in Django because it explains the complete lifecycle of a form.
-
----
-
-# Learning Objective
+## Learning Objective
 
 By the end of this lesson, you'll understand:
 
-* How a browser requests a form
-* How Django displays the form
 * What happens when the user clicks **Submit**
-* How Django receives submitted data
-* How to validate it
-* How to process it
+* What the `onSubmit` event is
+* Why we use `event.preventDefault()`
+* How to read the user's input
+* The complete form submission flow in Next.js
 
-We are **not** building a real project yet. The goal is to understand the workflow first.
-
----
-
-# The Big Picture
-
-A Django form usually has **two jobs**, handled by the **same view**.
-
-## First Request (GET)
-
-The user visits
-
-```
-/contact/
-```
-
-Browser sends
-
-```
-GET /contact/
-```
-
-Django returns
-
-```
-Empty form
-```
-
-The browser displays
-
-```
-Name:  __________
-
-Email: __________
-
-[Submit]
-```
-
-Nothing has been submitted yet.
+> **Today we are not validating the data.** Validation belongs to **Step 31**, exactly as defined in your roadmap. 
 
 ---
 
-# Second Request (POST)
+# What Happens When You Click Submit?
 
-The user types
+Let's start with a simple form.
 
-```
-Name: John
-
-Email: john@gmail.com
-```
-
-Then clicks
-
-```
-Submit
+```tsx
+<form>
+  <input type="text" />
+  <button>Submit</button>
+</form>
 ```
 
-Now the browser sends
-
-```
-POST /contact/
-```
-
-Notice that the page URL is often the same.
-
-Before
-
-```
-GET /contact/
-```
-
-After clicking Submit
-
-```
-POST /contact/
-```
-
-The difference is **not the URL**.
-
-The difference is the **HTTP method**.
-
----
-
-# Visual Flow
-
-```
-User opens page
-        │
-        ▼
-GET request
-        │
-        ▼
-View creates empty form
-        │
-        ▼
-Template displays form
-        │
-        ▼
-User fills form
-        │
-        ▼
-Clicks Submit
-        │
-        ▼
-POST request
-        │
-        ▼
-View receives submitted data
-        │
-        ▼
-Validation
-        │
-        ▼
-Valid?
- ┌─────────────┐
- │             │
- │ Yes         │ No
- │             │
- ▼             ▼
-Process     Show errors
-```
-
----
-
-# Why GET First?
-
-Think of ordering food online.
-
-First
-
-You open the ordering page.
-
-Nothing has been ordered.
-
-This is
-
-```
-GET
-```
-
-Then
-
-You choose items.
-
-Click
-
-```
-Place Order
-```
-
-Now information is sent.
-
-That's
-
-```
-POST
-```
-
----
-
-# How Django Knows?
-
-Inside the view, Django checks
-
-```python
-request.method
-```
-
-It can be
-
-```
-GET
-```
-
-or
-
-```
-POST
-```
-
-Example
-
-```python
-if request.method == "POST":
-    print("User submitted the form")
-else:
-    print("Display empty form")
-```
-
-You don't need to memorize this yet—just understand the idea.
-
----
-
-# Where Does the Submitted Data Go?
-
-When the browser submits a form, Django stores the submitted values in
-
-```python
-request.POST
-```
-
-Example
-
-Suppose the user enters
-
-```
-Name: John
-Email: john@gmail.com
-```
-
-Then
-
-```python
-request.POST
-```
-
-contains something conceptually like
+Suppose the user types:
 
 ```text
-{
-    "name": "John",
-    "email": "john@gmail.com"
+Name: John
+```
+
+Then clicks:
+
+```text
+[ Submit ]
+```
+
+What happens?
+
+---
+
+# The Browser's Default Behavior
+
+By default, HTML forms tell the browser:
+
+> "Submit this form."
+
+The browser will send the form data and then **reload the page**.
+
+The flow looks like this:
+
+```text
+User
+ │
+ ▼
+Fill Form
+ │
+ ▼
+Click Submit
+ │
+ ▼
+Browser submits form
+ │
+ ▼
+Page Reloads
+```
+
+This is normal HTML behavior.
+
+---
+
+# Why Is This a Problem?
+
+Modern React and Next.js applications usually **don't want the page to reload**.
+
+Instead, we want to:
+
+* Validate the data
+* Send it to an API
+* Show a success message
+* Update the UI
+
+...all **without refreshing the page**.
+
+That's why React gives us the `onSubmit` event.
+
+---
+
+# The `onSubmit` Event
+
+Instead of letting the browser handle the form, we can handle it ourselves.
+
+```tsx
+<form onSubmit={handleSubmit}>
+```
+
+Think of it like this:
+
+```text
+User clicks Submit
+        │
+        ▼
+React calls
+handleSubmit()
+```
+
+Instead of:
+
+```text
+Browser reloads page
+```
+
+---
+
+# Creating the Submit Function
+
+Let's update our page.
+
+```tsx
+export default function ContactPage() {
+
+  function handleSubmit() {
+    console.log("Form submitted");
+  }
+
+  return (
+    <main>
+      <form onSubmit={handleSubmit}>
+        <label>Name</label>
+        <br />
+        <input type="text" />
+
+        <br />
+        <br />
+
+        <button>Submit</button>
+      </form>
+    </main>
+  );
 }
 ```
 
-This is how Django accesses submitted form data.
+Now:
+
+1. Open the page.
+2. Open the browser's Developer Tools (**F12 → Console**).
+3. Click **Submit**.
+
+You'll briefly see:
+
+```text
+Form submitted
+```
+
+But then the page reloads.
+
+Why?
+
+Because we haven't stopped the browser's default behavior yet.
 
 ---
 
-# How Forms Use This Data
+# The Event Object
 
-Instead of manually reading `request.POST`, Django forms can take it directly.
+When React calls `handleSubmit`, it passes an **event object**.
 
-Conceptually:
+```tsx
+function handleSubmit(event) {
 
-```python
-form = ContactForm(request.POST)
+}
 ```
 
-The form now contains the user's submitted values and can validate them.
+Think of the event object as information about **what just happened**.
 
----
+In this case:
 
-# Validation
-
-Once the form has the submitted data, Django checks:
-
-* Is every required field filled?
-* Is the email valid?
-* Is the data the correct type?
-* Does it satisfy any custom rules?
-
-If everything is correct:
-
-```
-Valid
+```text
+A form was submitted.
 ```
 
-If something is wrong:
+So now our function becomes:
 
-```
-Invalid
-```
-
-The form remembers the user's input and any error messages so they can be shown back on the page.
-
----
-
-# The Complete Lifecycle
-
-```
-Browser
-   │
-   ▼
-GET
-   │
-   ▼
-View
-   │
-   ▼
-Create Empty Form
-   │
-   ▼
-Template
-   │
-   ▼
-User fills form
-   │
-   ▼
-POST
-   │
-   ▼
-View
-   │
-   ▼
-Create Form with POST data
-   │
-   ▼
-Validation
-   │
-   ├──────────► Invalid
-   │               │
-   │               ▼
-   │         Show form again
-   │
-   ▼
-Valid
-   │
-   ▼
-Save data / Send email / Process
-   │
-   ▼
-Response
+```tsx
+function handleSubmit(event) {
+  console.log("Form submitted");
+}
 ```
 
 ---
 
-# Key Concepts to Remember
+# What Is `event.preventDefault()`?
 
-* **GET** is used to display an empty form.
-* **POST** is used to submit form data.
-* `request.method` tells Django whether the request is GET or POST.
-* Submitted data is available in `request.POST`.
-* A Django form uses that data to perform validation.
-* If the data is valid, you process it.
-* If it's invalid, you show the form again with errors.
+The event object has a method called:
+
+```tsx
+event.preventDefault()
+```
+
+Its job is simple:
+
+> "Don't perform the browser's default action."
+
+For a form, the browser's default action is:
+
+```text
+Submit form
+
+↓
+
+Reload page
+```
+
+When we call:
+
+```tsx
+event.preventDefault();
+```
+
+the flow changes to:
+
+```text
+Submit form
+
+↓
+
+Stay on the same page
+```
 
 ---
 
-## ✅ Step 30 Summary
+# Updating the Function
 
-You now understand the complete flow of handling a form submission:
+```tsx
+function handleSubmit(event) {
+  event.preventDefault();
 
-1. Browser sends a **GET** request.
-2. Django returns an empty form.
-3. The user fills in the form.
-4. Browser sends a **POST** request.
-5. Django receives the submitted data.
-6. The form validates the data.
-7. If valid, Django processes it; if not, it redisplays the form with errors.
+  console.log("Form submitted");
+}
+```
 
-We still haven't connected a form to a view or template in code. That comes next, where you'll apply this lifecycle step by step before moving on to **Step 31 — Validation**.
+Now try again.
+
+1. Refresh the page once.
+2. Open the Console.
+3. Click **Submit**.
+
+You'll see:
+
+```text
+Form submitted
+```
+
+This time, **the page does not reload**.
+
+Congratulations!
+
+You've taken control of the form submission.
+
+---
+
+# Reading the User's Input
+
+Right now, our input has no way to remember what the user typed.
+
+Let's introduce React state.
+
+First, import `useState`.
+
+```tsx
+"use client";
+
+import { useState } from "react";
+```
+
+Create state for the name.
+
+```tsx
+const [name, setName] = useState("");
+```
+
+Now connect the input.
+
+```tsx
+<input
+  type="text"
+  value={name}
+  onChange={(event) => setName(event.target.value)}
+/>
+```
+
+Now the value in the input is stored in the `name` state.
+
+---
+
+# Accessing the Submitted Value
+
+Update the submit function.
+
+```tsx
+function handleSubmit(event) {
+  event.preventDefault();
+
+  console.log(name);
+}
+```
+
+Suppose the user types:
+
+```text
+John
+```
+
+Then clicks **Submit**.
+
+The Console shows:
+
+```text
+John
+```
+
+The data is now available inside your React component.
+
+---
+
+# Complete Example
+
+```tsx
+"use client";
+
+import { useState } from "react";
+
+export default function ContactPage() {
+  const [name, setName] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    console.log(name);
+  }
+
+  return (
+    <main>
+      <h1>Contact Form</h1>
+
+      <form onSubmit={handleSubmit}>
+        <label>Name</label>
+        <br />
+
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+
+        <br />
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+  );
+}
+```
+
+---
+
+# Understanding the Flow
+
+Here's what happens from start to finish.
+
+```text
+User
+ │
+ ▼
+Types "John"
+ │
+ ▼
+onChange
+ │
+ ▼
+setName("John")
+ │
+ ▼
+React State
+ │
+ ▼
+Clicks Submit
+ │
+ ▼
+onSubmit
+ │
+ ▼
+handleSubmit()
+ │
+ ▼
+event.preventDefault()
+ │
+ ▼
+console.log(name)
+```
+
+Notice that **nothing has been sent to a server yet**.
+
+Everything happens inside the browser.
+
+---
+
+# Why Do We Use State?
+
+Without state:
+
+```text
+Input
+
+↓
+
+Browser knows the value
+
+↓
+
+React does not
+```
+
+With state:
+
+```text
+Input
+
+↓
+
+React State
+
+↓
+
+React knows the value
+```
+
+React applications typically keep form values in state so your component can work with them.
+
+---
+
+# Common Beginner Mistakes
+
+### 1. Forgetting `"use client"`
+
+Since we're using `useState` and event handlers like `onSubmit`, this component must be a **Client Component**.
+
+```tsx
+"use client";
+```
+
+Without it, Next.js will show an error because Server Components cannot use browser event handlers.
+
+---
+
+### 2. Forgetting `event.preventDefault()`
+
+Without:
+
+```tsx
+event.preventDefault();
+```
+
+the browser reloads the page after submission.
+
+---
+
+### 3. Forgetting `onChange`
+
+If you write:
+
+```tsx
+<input value={name} />
+```
+
+but don't provide an `onChange` handler, the input becomes read-only because React controls its value but never updates it.
+
+---
+
+# Step 30 Summary
+
+Today you learned:
+
+* ✅ What happens when a form is submitted.
+* ✅ The purpose of the `onSubmit` event.
+* ✅ Why `event.preventDefault()` is important.
+* ✅ How to store input values using `useState`.
+* ✅ How to read those values when the form is submitted.
+* ✅ The complete submission flow inside a Next.js application.
+
+At this point, your form can:
+
+* Display inputs.
+* Accept user input.
+* Handle the submit event.
+* Access the entered data.
+
+**What it cannot do yet** is check whether the data is valid (for example, ensuring the name isn't empty or the email is correctly formatted). That is exactly what we'll learn in **Step 31 — Validation**, completing Phase 8 of your roadmap. 
