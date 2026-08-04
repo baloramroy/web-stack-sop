@@ -1,8 +1,10 @@
 **Phase 9 — API Routes**
 
-# Step 1 - Create Your First API
+# Lesson 1 - Create Your First API
 
-Learn only:
+## Goal
+
+**Learn only:**
 
 ```text
 GET
@@ -31,15 +33,11 @@ Browser / Client
 
 That's it.
 
-No database.
-
-No POST.
-
-No PUT.
-
-No DELETE.
-
-No authentication.
+-  No database.
+-  No POST.
+-  No PUT.
+-  No DELETE.
+-  No authentication.
 
 Just understand **how a GET API works in Next.js**.
 
@@ -271,4 +269,4 @@ Those topics come in later steps of the roadmap.
 
 ## Next Lesson
 
-Once you're comfortable with these concepts, we'll continue to **Step 32 (Hands-on)** by creating your **first `GET` API route**, sending a JSON response, and testing it in the browser and other tools. We'll still stay within the scope of **GET** before moving on to **Step 33 (POST)**, exactly as defined in your roadmap. 
+Once you're comfortable with these concepts, we'll continue to **Lesson 2 (Hands-on)** by creating your **first `GET` API route**, sending a JSON response, and testing it in the browser and other tools. We'll still stay within the scope of **GET** before moving on to **Lesson 3 (POST)**, exactly as defined in your roadmap. 
