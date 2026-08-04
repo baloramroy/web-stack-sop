@@ -1,19 +1,8 @@
-Absolutely. You're right, and we'll correct the course here.
+**Phase 8 — Forms**
 
-From this point onward:
+# Step 1 — Create Forms (Next.js)
 
-* ✅ We will follow **only the Next.js Learning Roadmap**.
-* ✅ We will **not** use Django concepts (`forms.Form`, `request.POST`, `ModelForm`, etc.).
-* ✅ We will **not** mix frameworks.
-* ✅ We will maintain the same slow, step-by-step teaching style that we've used throughout the roadmap. 
-
----
-
-# Phase 8 — Forms
-
-## Step 29 — Create Forms (Next.js)
-
-### Learning Objective
+## Learning Objective
 
 By the end of this lesson, you'll understand:
 
@@ -24,18 +13,9 @@ By the end of this lesson, you'll understand:
 
 **Today we are only creating the form.**
 
-We will **not**:
-
-* Handle submission
-* Validate input
-* Connect to an API
-* Save data
-
-Those are covered in the next steps of this phase. 
-
 ---
 
-# What is a Form?
+## What is a Form?
 
 A form is simply a way for users to send information to your application.
 
@@ -52,7 +32,7 @@ Every one of these is a form.
 
 ---
 
-# Real-Life Example
+## Real-Life Example
 
 Imagine you're filling out a paper application at a bank.
 
@@ -74,7 +54,7 @@ Instead of paper, it appears in the browser.
 
 ---
 
-# Forms in Next.js
+## Forms in Next.js
 
 Next.js doesn't have a special "form system."
 
@@ -100,7 +80,7 @@ Next.js simply renders it using React.
 
 ---
 
-# The Main HTML Elements
+## The Main HTML Elements
 
 A form usually contains:
 
@@ -124,7 +104,7 @@ We'll learn them one by one.
 
 ---
 
-# The `<form>` Element
+## The `<form>` Element
 
 Everything belongs inside:
 
@@ -148,7 +128,7 @@ Without a `<form>`, the browser doesn't know these fields belong together.
 
 ---
 
-# The `<input>` Element
+## The `<input>` Element
 
 This is where the user types information.
 
@@ -196,7 +176,7 @@ Browser:
 
 ---
 
-# The `<label>` Element
+## The `<label>` Element
 
 Labels describe an input.
 
@@ -220,7 +200,7 @@ Without labels, users don't know what to enter.
 
 ---
 
-# The `<button>` Element
+## The `<button>` Element
 
 Buttons perform an action.
 
@@ -242,7 +222,7 @@ For forms, this button is typically used to submit the entered information.
 
 ---
 
-# Your First Form
+## Your First Form
 
 Create a new page.
 
@@ -312,7 +292,7 @@ You've created your first form in a Next.js application.
 
 ---
 
-# How Does This Fit into Next.js?
+## How Does This Fit into Next.js?
 
 Remember the flow we learned earlier in the roadmap:
 
@@ -344,7 +324,7 @@ Nothing special happens yet.
 
 ---
 
-# What Happens When You Click "Submit"?
+## What Happens When You Click "Submit"?
 
 Right now...
 
@@ -358,7 +338,7 @@ That is exactly what we'll learn in **Step 30 — Handle Form Submission**.
 
 ---
 
-# Common Beginner Mistakes
+## Common Beginner Mistakes
 
 ### 1. Thinking forms are a Next.js feature
 
@@ -366,7 +346,7 @@ They're not.
 
 Forms are standard HTML elements that Next.js renders through React.
 
----
+#
 
 ### 2. Forgetting the `<form>` tag
 
@@ -386,7 +366,7 @@ Correct:
 </form>
 ```
 
----
+#
 
 ### 3. Forgetting labels
 
@@ -399,7 +379,7 @@ Always tell users what each input is for.
 
 ---
 
-# Step 29 Summary
+## Step 1 Summary
 
 Today you learned:
 
@@ -411,9 +391,9 @@ Today you learned:
 
 ---
 
-### Next Lesson
+## Next Lesson
 
-We'll continue with **Phase 8 – Step 30: Handle Form Submission**, where you'll learn:
+We'll continue with **Phase 8 – Step 2: Handle Form Submission**, where you'll learn:
 
 * What happens when the user clicks **Submit**
 * The `onSubmit` event

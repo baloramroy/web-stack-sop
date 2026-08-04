@@ -1,14 +1,9 @@
-Perfect. We'll continue **exactly according to your Next.js roadmap**.
+**Phase 8 — Forms**
+# Step 2 — Handle Form Submission
 
 We have completed:
 
-* ✅ Step 29 — Create Forms
-
-Now we start:
-
-# Phase 8 — Forms
-
-# Step 30 — Handle Form Submission
+* ✅ Step 1 — Create Forms
 
 ## Learning Objective
 
@@ -24,7 +19,7 @@ By the end of this lesson, you'll understand:
 
 ---
 
-# What Happens When You Click Submit?
+## What Happens When You Click Submit?
 
 Let's start with a simple form.
 
@@ -51,7 +46,7 @@ What happens?
 
 ---
 
-# The Browser's Default Behavior
+## The Browser's Default Behavior
 
 By default, HTML forms tell the browser:
 
@@ -81,7 +76,7 @@ This is normal HTML behavior.
 
 ---
 
-# Why Is This a Problem?
+## Why Is This a Problem?
 
 Modern React and Next.js applications usually **don't want the page to reload**.
 
@@ -98,7 +93,7 @@ That's why React gives us the `onSubmit` event.
 
 ---
 
-# The `onSubmit` Event
+## The `onSubmit` Event
 
 Instead of letting the browser handle the form, we can handle it ourselves.
 
@@ -124,7 +119,7 @@ Browser reloads page
 
 ---
 
-# Creating the Submit Function
+## Creating the Submit Function
 
 Let's update our page.
 
@@ -172,7 +167,7 @@ Because we haven't stopped the browser's default behavior yet.
 
 ---
 
-# The Event Object
+## The Event Object
 
 When React calls `handleSubmit`, it passes an **event object**.
 
@@ -200,7 +195,7 @@ function handleSubmit(event) {
 
 ---
 
-# What Is `event.preventDefault()`?
+## What Is `event.preventDefault()`?
 
 The event object has a method called:
 
@@ -240,7 +235,7 @@ Stay on the same page
 
 ---
 
-# Updating the Function
+## Updating the Function
 
 ```tsx
 function handleSubmit(event) {
@@ -270,7 +265,7 @@ You've taken control of the form submission.
 
 ---
 
-# Reading the User's Input
+## Reading the User's Input
 
 Right now, our input has no way to remember what the user typed.
 
@@ -304,7 +299,7 @@ Now the value in the input is stored in the `name` state.
 
 ---
 
-# Accessing the Submitted Value
+## Accessing the Submitted Value
 
 Update the submit function.
 
@@ -334,7 +329,7 @@ The data is now available inside your React component.
 
 ---
 
-# Complete Example
+## Complete Example
 
 ```tsx
 "use client";
@@ -376,7 +371,7 @@ export default function ContactPage() {
 
 ---
 
-# Understanding the Flow
+## Understanding the Flow
 
 Here's what happens from start to finish.
 
@@ -417,7 +412,7 @@ Everything happens inside the browser.
 
 ---
 
-# Why Do We Use State?
+## Why Do We Use State?
 
 Without state:
 
@@ -451,7 +446,7 @@ React applications typically keep form values in state so your component can wor
 
 ---
 
-# Common Beginner Mistakes
+## Common Beginner Mistakes
 
 ### 1. Forgetting `"use client"`
 
@@ -463,7 +458,7 @@ Since we're using `useState` and event handlers like `onSubmit`, this component 
 
 Without it, Next.js will show an error because Server Components cannot use browser event handlers.
 
----
+#
 
 ### 2. Forgetting `event.preventDefault()`
 
@@ -475,7 +470,7 @@ event.preventDefault();
 
 the browser reloads the page after submission.
 
----
+#
 
 ### 3. Forgetting `onChange`
 
@@ -489,7 +484,7 @@ but don't provide an `onChange` handler, the input becomes read-only because Rea
 
 ---
 
-# Step 30 Summary
+## Step 2 Summary
 
 Today you learned:
 
@@ -507,4 +502,4 @@ At this point, your form can:
 * Handle the submit event.
 * Access the entered data.
 
-**What it cannot do yet** is check whether the data is valid (for example, ensuring the name isn't empty or the email is correctly formatted). That is exactly what we'll learn in **Step 31 — Validation**, completing Phase 8 of your roadmap. 
+**What it cannot do yet** is check whether the data is valid (for example, ensuring the name isn't empty or the email is correctly formatted). That is exactly what we'll learn in **Step 3 — Validation**, completing Phase 8 of your roadmap. 

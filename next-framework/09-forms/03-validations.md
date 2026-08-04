@@ -1,4 +1,6 @@
-Perfect. We are staying **100% within the Next.js roadmap**.
+**Phase 8 — Forms**
+
+# Step 3 — Validation
 
 Completed:
 
@@ -8,10 +10,6 @@ Completed:
 Now we begin the final lesson of this phase.
 
 ---
-
-# Phase 8 — Forms
-
-# Step 31 — Validation
 
 ## Learning Objective
 
@@ -29,7 +27,7 @@ By the end of this lesson, you'll understand:
 
 ---
 
-# What Is Validation?
+## What Is Validation?
 
 Validation means checking whether the user's input is acceptable **before** processing it.
 
@@ -63,7 +61,7 @@ Validation catches these problems before moving on.
 
 ---
 
-# Real-Life Example
+## Real-Life Example
 
 Imagine you're registering for a new account.
 
@@ -93,7 +91,7 @@ That's validation.
 
 ---
 
-# Where Does Validation Fit?
+## Where Does Validation Fit?
 
 Let's review the form flow.
 
@@ -123,7 +121,7 @@ Validation happens **before** the form moves to the next step.
 
 ---
 
-# Our Contact Form
+## Our Contact Form
 
 Let's extend our previous example.
 
@@ -151,7 +149,7 @@ export default function ContactPage() {
 
 ---
 
-# What Should We Validate?
+## What Should We Validate?
 
 For this lesson, we'll use two simple rules.
 
@@ -170,7 +168,7 @@ John
 ```text
 ```
 
----
+#
 
 ### Email
 
@@ -195,7 +193,7 @@ Later in your journey, you'll learn stronger validation techniques, but these ru
 
 ---
 
-# Creating an Error State
+## Creating an Error State
 
 Besides storing the input values, we also need somewhere to store error messages.
 
@@ -227,7 +225,7 @@ error
 
 ---
 
-# Validating on Submit
+## Validating on Submit
 
 Update the submit function.
 
@@ -260,7 +258,7 @@ Let's understand this step by step.
 
 ---
 
-# First Check
+## First Check
 
 ```tsx
 if (name.trim() === "") {
@@ -296,7 +294,7 @@ which counts as empty.
 
 ---
 
-# Second Check
+## Second Check
 
 ```tsx
 if (email.trim() === "") {
@@ -306,7 +304,7 @@ The email field cannot be empty.
 
 ---
 
-# Third Check
+## Third Check
 
 ```tsx
 if (!email.includes("@")) {
@@ -336,7 +334,7 @@ Remember, this is just a simple learning example.
 
 ---
 
-# Showing the Error
+## Showing the Error
 
 Right now, we're storing the error message.
 
@@ -380,7 +378,7 @@ Name is required.
 
 ---
 
-# Complete Example
+## Complete Example
 
 ```tsx
 "use client";
@@ -455,7 +453,7 @@ export default function ContactPage() {
 
 ---
 
-# What Happens Now?
+## What Happens Now?
 
 Suppose the user submits:
 
@@ -534,7 +532,7 @@ Console
 
 ---
 
-# Why Validate on the Client?
+## Why Validate on the Client?
 
 Client-side validation improves the user experience.
 
@@ -548,13 +546,13 @@ When we reach **Phase 9 — API Routes**, you'll learn that the server should al
 
 ---
 
-# Common Beginner Mistakes
+## Common Beginner Mistakes
 
 ### 1. Forgetting `event.preventDefault()`
 
 The page reloads before your validation runs.
 
----
+#
 
 ### 2. Forgetting to clear old errors
 
@@ -564,7 +562,7 @@ If validation succeeds, remember to remove the previous message.
 setError("");
 ```
 
----
+#
 
 ### 3. Trusting only the browser
 
@@ -572,7 +570,7 @@ Even though you're validating in the browser, the server must validate the data 
 
 ---
 
-# Step 31 Summary
+## Step 3 Summary
 
 Today you learned:
 
