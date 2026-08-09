@@ -45,7 +45,7 @@ This SOP applies to all Windows 10 and Windows 11 workstations within the organi
 
 You should see the Python Setup window.
 
-![django1](../django-images/django1.png)
+![django1](../../django-images/django1.png)
 
 ---
 
@@ -55,7 +55,7 @@ You should see the Python Setup window.
 
 At the bottom of the installer window:
 
-![django2](../django-images/django2.png)
+![django2](../../django-images/django2.png)
 
 ☑ **Check the box:** `Add python.exe to PATH`
 
@@ -67,7 +67,7 @@ If you skip this step, you'll need to **configure PATH** manually later.
 
 Click **Install Now** for a standard installation with default settings.
 
-![django3](../django-images/django2.1.png)
+![django3](../../django-images/django2.1.png)
 
 For advanced users who want to change the installation directory, click **Customize installation**
 
@@ -75,7 +75,7 @@ For advanced users who want to change the installation directory, click **Custom
 
 ## Customize Installation (If selected)
 
-![django3](../django-images/django3.png)
+![django3](../../django-images/django3.png)
 
 - Ensure **pip (Python package installer)** is checked. This is essential for installing **third-party libraries**. 
 
@@ -94,7 +94,7 @@ From this Page, Click:
 Install Now
 ```
 
-![django4](../django-images/django4.png)
+![django4](../../django-images/django4.png)
 
 - This installs Python with recommended defaults.
 
@@ -104,7 +104,7 @@ Install Now
 
 ## Finish Installation
 
-![django5](../django-images/django5.png)
+![django5](../../django-images/django5.png)
 
 When installation completes, you should see:
 
